@@ -95,9 +95,21 @@ button{
 <div class="input-area">
     <input id="msg" type="text" placeholder="Digite sua mensagem...">
     <button onclick="enviar()">Enviar</button>
+    <button onclick="limparChat()">
+    Limpar
+</button>
 </div>
 
 <script>
+    window.onload = function(){
+
+    let historico = localStorage.getItem("chatking_historico");
+
+    if(historico){
+        document.getElementById("chat").innerHTML = historico;
+    }
+
+};
 
 function enviar(){
 
@@ -176,6 +188,8 @@ else if(pergunta.includes("capital do brasil")){
 else{
     resposta = "Ainda estou aprendendo. Tente outra pergunta.";
 }
+    let historico = chat.innerHTML;
+localStorage.setItem("chatking_historico", historico);
 
 
 
@@ -201,6 +215,18 @@ document.getElementById("msg").addEventListener("keydown", function(event){
 });
 
 </script>
+    function limparChat(){
+
+    localStorage.removeItem("chatking_historico");
+
+    document.getElementById("chat").innerHTML = `
+        <div class="message bot">
+            Olá! Eu sou o ChatKing AI. Faça uma pergunta.
+        </div>
+    `;
+
+}
+</button>
 
 </body>
 </html>
