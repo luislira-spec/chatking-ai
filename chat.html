@@ -138,7 +138,10 @@ else if(pergunta.includes("boa noite")){
 else if(pergunta.includes("nome")){
     resposta = "Meu nome é ChatKing AI.";
 }
-else if(pergunta.includes("quem criou você")){
+else if(
+    pergunta.includes("quem criou você") ||
+    pergunta.includes("quem criou voce")
+){
     resposta = "Fui criado por Luís Felipe Lira e Daniel Perez.";
 }
 else if(pergunta.includes("hora")){
