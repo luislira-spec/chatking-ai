@@ -119,30 +119,62 @@ function enviar(){
     let pergunta = texto.toLowerCase();
     let resposta = "";
 
-    if(pergunta.includes("oi") || pergunta.includes("olá")){
-        resposta = "Olá! Como posso ajudar?";
-    }
-    else if(pergunta.includes("tudo bem")){
-        resposta = "Estou muito bem!";
-    }
-    else if(pergunta.includes("nome")){
-        resposta = "Meu nome é ChatKing AI.";
-    }
-    else if(pergunta.includes("quem criou você")){
-        resposta = "Fui criado por Luís Felipe Lira e Daniel Perez.";
-    }
-    else if(pergunta.includes("hora")){
-        resposta = "Agora são " + new Date().toLocaleTimeString();
-    }
-    else if(pergunta.includes("data")){
-        resposta = "Hoje é " + new Date().toLocaleDateString();
-    }
-    else if(pergunta.includes("piada")){
-        resposta = "Por que o computador foi ao médico? Porque ele estava com um vírus!";
-    }
-    else{
-        resposta = "Ainda estou aprendendo. Tente outra pergunta.";
-    }
+   ```javascript
+if(pergunta.includes("oi") || pergunta.includes("olá")){
+    resposta = "Olá! Como posso ajudar?";
+}
+else if(pergunta.includes("tudo bem")){
+    resposta = "Estou muito bem!";
+}
+else if(pergunta.includes("bom dia")){
+    resposta = "Bom dia! Espero que você tenha um ótimo dia.";
+}
+else if(pergunta.includes("boa tarde")){
+    resposta = "Boa tarde! Como posso ajudar?";
+}
+else if(pergunta.includes("boa noite")){
+    resposta = "Boa noite! Como foi seu dia?";
+}
+else if(pergunta.includes("nome")){
+    resposta = "Meu nome é ChatKing AI.";
+}
+else if(pergunta.includes("quem criou você")){
+    resposta = "Fui criado por Luís Felipe Lira e Daniel Perez.";
+}
+else if(pergunta.includes("hora")){
+    resposta = "Agora são " + new Date().toLocaleTimeString();
+}
+else if(pergunta.includes("data")){
+    resposta = "Hoje é " + new Date().toLocaleDateString();
+}
+else if(pergunta.includes("piada")){
+    let piadas = [
+        "Por que o computador foi ao médico? Porque ele estava com um vírus!",
+        "Qual é o animal mais tecnológico? O rato do computador!",
+        "Por que o teclado foi à escola? Para melhorar suas teclas!"
+    ];
+    resposta = piadas[Math.floor(Math.random()*piadas.length)];
+}
+else if(pergunta.includes("curiosidade")){
+    resposta = "Curiosidade: o primeiro site da internet foi criado em 1991!";
+}
+else if(pergunta.includes("chatking")){
+    resposta = "O ChatKing é um projeto criado por Luís Felipe Lira e Daniel Perez.";
+}
+else if(pergunta.includes("cor favorita")){
+    resposta = "Minha cor favorita é laranja, a cor oficial do ChatKing!";
+}
+else if(pergunta.includes("quantos dias tem um ano")){
+    resposta = "Um ano normalmente tem 365 dias.";
+}
+else if(pergunta.includes("capital do brasil")){
+    resposta = "A capital do Brasil é Brasília.";
+}
+else{
+    resposta = "Ainda estou aprendendo. Tente outra pergunta.";
+}
+```
+
 
     setTimeout(function(){
 
