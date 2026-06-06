@@ -151,11 +151,41 @@ function enviar(){
 
     setTimeout(()=>{
 
-        chat.innerHTML += `
-        <div class="message bot">
-            Esta é uma resposta de demonstração do ChatKing AI.
-        </div>
-        `;
+        ```javascript
+let pergunta = campo.value.toLowerCase();
+let resposta = "";
+
+if (pergunta.includes("oi") || pergunta.includes("olá")) {
+    resposta = "Olá! Eu sou o ChatKing AI. Como posso ajudar?";
+}
+else if (pergunta.includes("tudo bem")) {
+    resposta = "Estou funcionando perfeitamente! E você?";
+}
+else if (pergunta.includes("seu nome")) {
+    resposta = "Meu nome é ChatKing AI!";
+}
+else if (pergunta.includes("quem criou você")) {
+    resposta = "Fui criado por Luís Felipe Lira e Daniel Perez.";
+}
+else if (pergunta.includes("hora")) {
+    resposta = "Agora são " + new Date().toLocaleTimeString();
+}
+else if (pergunta.includes("data")) {
+    resposta = "Hoje é " + new Date().toLocaleDateString();
+}
+else if (pergunta.includes("piada")) {
+    resposta = "Por que o computador foi ao médico? Porque ele estava com um vírus!";
+}
+else {
+    resposta = "Ainda estou aprendendo. Tente fazer outra pergunta!";
+}
+
+chat.innerHTML += `
+<div class="message bot">
+    ${resposta}
+</div>
+`;
+```
 
         chat.scrollTop=chat.scrollHeight;
 
