@@ -1,3 +1,4 @@
+
 ```html
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -7,10 +8,15 @@
 <title>ChatKing AI</title>
 
 <style>
-body{
+*{
     margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
     font-family:Arial, sans-serif;
-    background:#070b14;
+    background:#0b1220;
     color:white;
     display:flex;
     flex-direction:column;
@@ -19,17 +25,24 @@ body{
 
 header{
     background:#111827;
-    padding:15px;
+    padding:18px;
     text-align:center;
+    border-bottom:1px solid rgba(255,255,255,0.1);
 }
 
 .logo{
-    font-size:32px;
+    font-size:38px;
     font-weight:bold;
 }
 
 .logo span{
     color:#ff8c00;
+}
+
+.sub{
+    color:#bdbdbd;
+    margin-top:5px;
+    font-size:14px;
 }
 
 .chat-area{
@@ -39,10 +52,11 @@ header{
 }
 
 .message{
-    padding:12px;
-    margin-bottom:10px;
-    border-radius:12px;
-    max-width:75%;
+    max-width:80%;
+    padding:14px;
+    border-radius:14px;
+    margin-bottom:12px;
+    line-height:1.5;
 }
 
 .bot{
@@ -55,26 +69,38 @@ header{
 }
 
 .input-area{
-    display:flex;
-    padding:15px;
     background:#111827;
+    padding:15px;
+    display:flex;
+    gap:10px;
 }
 
 #msg{
     flex:1;
-    padding:12px;
+    padding:14px;
     border:none;
-    border-radius:10px;
+    border-radius:12px;
+    background:#1f2937;
+    color:white;
+    font-size:15px;
 }
 
 button{
-    margin-left:10px;
-    padding:12px 20px;
     border:none;
-    border-radius:10px;
+    border-radius:12px;
+    padding:14px 18px;
     background:#ff8c00;
     color:white;
     cursor:pointer;
+    font-weight:bold;
+}
+
+button:hover{
+    opacity:0.9;
+}
+
+.limpar{
+    background:#374151;
 }
 </style>
 </head>
@@ -83,25 +109,24 @@ button{
 
 <header>
     <div class="logo">👑 Chat<span>King</span></div>
-    <p>Criado por Luís Felipe Lira e Daniel Perez</p>
+    <div class="sub">Criado por Luís Felipe Lira e Daniel Perez</div>
 </header>
 
 <div class="chat-area" id="chat">
     <div class="message bot">
-        Olá! Eu sou o ChatKing AI. Faça uma pergunta.
+        Olá! Eu sou o ChatKing AI. Como posso ajudar você hoje?
     </div>
 </div>
 
 <div class="input-area">
     <input id="msg" type="text" placeholder="Digite sua mensagem...">
     <button onclick="enviar()">Enviar</button>
-    <button onclick="limparChat()">
-    Limpar
-</button>
+    <button class="limpar" onclick="limparChat()">Limpar</button>
 </div>
 
 <script>
-    window.onload = function(){
+
+window.onload = function(){
 
     let historico = localStorage.getItem("chatking_historico");
 
@@ -131,67 +156,53 @@ function enviar(){
     let pergunta = texto.toLowerCase();
     let resposta = "";
 
-   
-if(pergunta.includes("oi") || pergunta.includes("olá")){
-    resposta = "Olá! Como posso ajudar?";
-}
-else if(pergunta.includes("tudo bem")){
-    resposta = "Estou muito bem!";
-}
-else if(pergunta.includes("bom dia")){
-    resposta = "Bom dia! Espero que você tenha um ótimo dia.";
-}
-else if(pergunta.includes("boa tarde")){
-    resposta = "Boa tarde! Como posso ajudar?";
-}
-else if(pergunta.includes("boa noite")){
-    resposta = "Boa noite! Como foi seu dia?";
-}
-else if(pergunta.includes("nome")){
-    resposta = "Meu nome é ChatKing AI.";
-}
-else if(
-    pergunta.includes("quem criou você") ||
-    pergunta.includes("quem criou voce")
-){
-    resposta = "Fui criado por Luís Felipe Lira e Daniel Perez.";
-}
-else if(pergunta.includes("hora")){
-    resposta = "Agora são " + new Date().toLocaleTimeString();
-}
-else if(pergunta.includes("data")){
-    resposta = "Hoje é " + new Date().toLocaleDateString();
-}
-else if(pergunta.includes("piada")){
-    let piadas = [
-        "Por que o computador foi ao médico? Porque ele estava com um vírus!",
-        "Qual é o animal mais tecnológico? O rato do computador!",
-        "Por que o teclado foi à escola? Para melhorar suas teclas!"
-    ];
-    resposta = piadas[Math.floor(Math.random()*piadas.length)];
-}
-else if(pergunta.includes("curiosidade")){
-    resposta = "Curiosidade: o primeiro site da internet foi criado em 1991!";
-}
-else if(pergunta.includes("chatking")){
-    resposta = "O ChatKing é um projeto criado por Luís Felipe Lira e Daniel Perez.";
-}
-else if(pergunta.includes("cor favorita")){
-    resposta = "Minha cor favorita é laranja, a cor oficial do ChatKing!";
-}
-else if(pergunta.includes("quantos dias tem um ano")){
-    resposta = "Um ano normalmente tem 365 dias.";
-}
-else if(pergunta.includes("capital do brasil")){
-    resposta = "A capital do Brasil é Brasília.";
-}
-else{
-    resposta = "Ainda estou aprendendo. Tente outra pergunta.";
-}
-    let historico = chat.innerHTML;
-localStorage.setItem("chatking_historico", historico);
-
-
+    if(pergunta.includes("oi") || pergunta.includes("olá")){
+        resposta = "Olá! Como posso ajudar?";
+    }
+    else if(pergunta.includes("tudo bem")){
+        resposta = "Estou muito bem!";
+    }
+    else if(pergunta.includes("bom dia")){
+        resposta = "Bom dia! Espero que você tenha um ótimo dia.";
+    }
+    else if(pergunta.includes("boa tarde")){
+        resposta = "Boa tarde! Como posso ajudar?";
+    }
+    else if(pergunta.includes("boa noite")){
+        resposta = "Boa noite! Como foi seu dia?";
+    }
+    else if(pergunta.includes("nome")){
+        resposta = "Meu nome é ChatKing AI.";
+    }
+    else if(
+        pergunta.includes("quem criou você") ||
+        pergunta.includes("quem criou voce")
+    ){
+        resposta = "Fui criado por Luís Felipe Lira e Daniel Perez.";
+    }
+    else if(pergunta.includes("hora")){
+        resposta = "Agora são " + new Date().toLocaleTimeString();
+    }
+    else if(pergunta.includes("data")){
+        resposta = "Hoje é " + new Date().toLocaleDateString();
+    }
+    else if(pergunta.includes("piada")){
+        let piadas = [
+            "Por que o computador foi ao médico? Porque ele estava com um vírus!",
+            "Qual é o animal mais tecnológico? O rato do computador!",
+            "Por que o teclado foi à escola? Para melhorar suas teclas!"
+        ];
+        resposta = piadas[Math.floor(Math.random()*piadas.length)];
+    }
+    else if(pergunta.includes("curiosidade")){
+        resposta = "Curiosidade: o primeiro site da internet foi criado em 1991!";
+    }
+    else if(pergunta.includes("capital do brasil")){
+        resposta = "A capital do Brasil é Brasília.";
+    }
+    else{
+        resposta = "Ainda estou aprendendo. Tente outra pergunta.";
+    }
 
     setTimeout(function(){
 
@@ -201,6 +212,11 @@ localStorage.setItem("chatking_historico", historico);
             </div>
         `;
 
+        localStorage.setItem(
+            "chatking_historico",
+            chat.innerHTML
+        );
+
         chat.scrollTop = chat.scrollHeight;
 
     },500);
@@ -208,26 +224,28 @@ localStorage.setItem("chatking_historico", historico);
     campo.value = "";
 }
 
-document.getElementById("msg").addEventListener("keydown", function(event){
-    if(event.key === "Enter"){
-        enviar();
-    }
-});
-
-</script>
-    function limparChat(){
+function limparChat(){
 
     localStorage.removeItem("chatking_historico");
 
     document.getElementById("chat").innerHTML = `
         <div class="message bot">
-            Olá! Eu sou o ChatKing AI. Faça uma pergunta.
+            Olá! Eu sou o ChatKing AI. Como posso ajudar você hoje?
         </div>
     `;
-
 }
-</button>
+
+document.getElementById("msg").addEventListener("keydown", function(event){
+
+    if(event.key === "Enter"){
+        enviar();
+    }
+
+});
+</script>
 
 </body>
 </html>
+```
+
 
