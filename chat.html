@@ -1,5 +1,4 @@
 
-```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -16,22 +15,21 @@
 
 body{
     font-family:Arial, sans-serif;
-    background:#0b1220;
+    background:#070b14;
     color:white;
+    height:100vh;
     display:flex;
     flex-direction:column;
-    height:100vh;
 }
 
 header{
     background:#111827;
-    padding:18px;
+    padding:16px;
     text-align:center;
-    border-bottom:1px solid rgba(255,255,255,0.1);
 }
 
 .logo{
-    font-size:38px;
+    font-size:30px;
     font-weight:bold;
 }
 
@@ -40,9 +38,9 @@ header{
 }
 
 .sub{
-    color:#bdbdbd;
-    margin-top:5px;
-    font-size:14px;
+    color:#aaa;
+    font-size:13px;
+    margin-top:4px;
 }
 
 .chat-area{
@@ -52,11 +50,11 @@ header{
 }
 
 .message{
-    max-width:80%;
-    padding:14px;
+    max-width:78%;
+    padding:13px;
     border-radius:14px;
     margin-bottom:12px;
-    line-height:1.5;
+    line-height:1.4;
 }
 
 .bot{
@@ -69,38 +67,37 @@ header{
 }
 
 .input-area{
-    background:#111827;
-    padding:15px;
     display:flex;
-    gap:10px;
+    gap:8px;
+    padding:14px;
+    background:#111827;
 }
 
 #msg{
     flex:1;
-    padding:14px;
+    padding:13px;
     border:none;
-    border-radius:12px;
+    border-radius:10px;
     background:#1f2937;
     color:white;
-    font-size:15px;
 }
 
 button{
     border:none;
-    border-radius:12px;
-    padding:14px 18px;
-    background:#ff8c00;
-    color:white;
+    border-radius:10px;
+    padding:13px 17px;
     cursor:pointer;
     font-weight:bold;
 }
 
-button:hover{
-    opacity:0.9;
+.enviar{
+    background:#ff8c00;
+    color:white;
 }
 
 .limpar{
     background:#374151;
+    color:white;
 }
 </style>
 </head>
@@ -108,19 +105,21 @@ button:hover{
 <body>
 
 <header>
-    <div class="logo">👑 Chat<span>King</span></div>
-    <div class="sub">Criado por Luís Felipe Lira e Daniel Perez</div>
+    <div class="logo">👑 Chat<span>King</span> AI</div>
+    <div class="sub">
+        Criado por Luís Felipe Lira e Daniel Perez
+    </div>
 </header>
 
 <div class="chat-area" id="chat">
     <div class="message bot">
-        Olá! Eu sou o ChatKing AI. Como posso ajudar você hoje?
+        Olá! Eu sou o ChatKing AI. Como posso ajudar?
     </div>
 </div>
 
 <div class="input-area">
-    <input id="msg" type="text" placeholder="Digite sua mensagem...">
-    <button onclick="enviar()">Enviar</button>
+    <input id="msg" placeholder="Digite sua mensagem...">
+    <button class="enviar" onclick="enviar()">Enviar</button>
     <button class="limpar" onclick="limparChat()">Limpar</button>
 </div>
 
@@ -128,10 +127,12 @@ button:hover{
 
 window.onload = function(){
 
-    let historico = localStorage.getItem("chatking_historico");
+    let historico =
+        localStorage.getItem("chatking_historico");
 
     if(historico){
-        document.getElementById("chat").innerHTML = historico;
+        document.getElementById("chat").innerHTML =
+            historico;
     }
 
 };
@@ -156,52 +157,86 @@ function enviar(){
     let pergunta = texto.toLowerCase();
     let resposta = "";
 
-    if(pergunta.includes("oi") || pergunta.includes("olá")){
+    if(
+        pergunta.includes("oi") ||
+        pergunta.includes("olá")
+    ){
         resposta = "Olá! Como posso ajudar?";
     }
+
     else if(pergunta.includes("tudo bem")){
         resposta = "Estou muito bem!";
     }
+
     else if(pergunta.includes("bom dia")){
         resposta = "Bom dia! Espero que você tenha um ótimo dia.";
     }
+
     else if(pergunta.includes("boa tarde")){
         resposta = "Boa tarde! Como posso ajudar?";
     }
+
     else if(pergunta.includes("boa noite")){
-        resposta = "Boa noite! Como foi seu dia?";
+        resposta = "Boa noite! Como posso ajudar?";
     }
+
     else if(pergunta.includes("nome")){
         resposta = "Meu nome é ChatKing AI.";
     }
+
     else if(
         pergunta.includes("quem criou você") ||
         pergunta.includes("quem criou voce")
     ){
-        resposta = "Fui criado por Luís Felipe Lira e Daniel Perez.";
+        resposta =
+            "Fui criado por Luís Felipe Lira e Daniel Perez.";
     }
+
     else if(pergunta.includes("hora")){
-        resposta = "Agora são " + new Date().toLocaleTimeString();
+        resposta =
+            "Agora são " +
+            new Date().toLocaleTimeString();
     }
+
     else if(pergunta.includes("data")){
-        resposta = "Hoje é " + new Date().toLocaleDateString();
+        resposta =
+            "Hoje é " +
+            new Date().toLocaleDateString();
     }
+
     else if(pergunta.includes("piada")){
+
         let piadas = [
-            "Por que o computador foi ao médico? Porque ele estava com um vírus!",
+            "Por que o computador foi ao médico? Porque estava com um vírus!",
             "Qual é o animal mais tecnológico? O rato do computador!",
-            "Por que o teclado foi à escola? Para melhorar suas teclas!"
+            "Por que o teclado foi à escola? Para aprender novas teclas!"
         ];
-        resposta = piadas[Math.floor(Math.random()*piadas.length)];
+
+        resposta =
+            piadas[
+                Math.floor(
+                    Math.random() * piadas.length
+                )
+            ];
     }
+
     else if(pergunta.includes("curiosidade")){
-        resposta = "Curiosidade: o primeiro site da internet foi criado em 1991!";
+        resposta =
+            "Curiosidade: o primeiro site da internet foi publicado em 1991.";
     }
+
     else if(pergunta.includes("capital do brasil")){
         resposta = "A capital do Brasil é Brasília.";
     }
+
+    else if(pergunta.includes("chatking")){
+        resposta =
+            "O ChatKing é um projeto criado por Luís Felipe Lira e Daniel Perez.";
+    }
+
     else{
-        resposta = "Ainda estou aprendendo. Tente outra pergunta.";
+        resposta =
+            "Ainda estou aprendendo. Tente fazer outra pergunta.";
     }
 
     setTimeout(function(){
@@ -219,33 +254,35 @@ function enviar(){
 
         chat.scrollTop = chat.scrollHeight;
 
-    },500);
+    },400);
 
     campo.value = "";
 }
 
 function limparChat(){
 
-    localStorage.removeItem("chatking_historico");
+    localStorage.removeItem(
+        "chatking_historico"
+    );
 
     document.getElementById("chat").innerHTML = `
         <div class="message bot">
-            Olá! Eu sou o ChatKing AI. Como posso ajudar você hoje?
+            Olá! Eu sou o ChatKing AI. Como posso ajudar?
         </div>
     `;
 }
 
-document.getElementById("msg").addEventListener("keydown", function(event){
+document
+.getElementById("msg")
+.addEventListener("keydown", function(event){
 
     if(event.key === "Enter"){
         enviar();
     }
 
 });
+
 </script>
 
 </body>
 </html>
-```
-
-
