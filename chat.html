@@ -1,471 +1,473 @@
 
 
 
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Vetrix AI - Estudos</title>
+<title>Vetrix AI</title>
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, Helvetica, sans-serif;
-    }
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
-    body {
-      min-height: 100vh;
-      background:
-        radial-gradient(circle at 50% 0%, rgba(255, 120, 0, 0.12), transparent 35%),
-        #030303;
-      color: white;
-      overflow: hidden;
-    }
+body {
+    background: #080706;
+    color: #f2f2f2;
+    font-family: Arial, Helvetica, sans-serif;
+    min-height: 100vh;
+}
 
-    /* BARRA SUPERIOR */
+/* TOPO */
+
+.topo {
+    height: 118px;
+    border-bottom: 1px solid #3a291c;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 32px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.logo-v {
+    width: 40px;
+    height: 40px;
+    border: 2px solid #ff7900;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ff7900;
+    font-size: 24px;
+}
+
+.logo-ai {
+    color: #ff7900;
+}
+
+.topo-direita {
+    display: flex;
+    gap: 14px;
+}
+
+.usuario,
+.inicio {
+    border: 1px solid #8b430b;
+    background: #090807;
+    color: white;
+    border-radius: 6px;
+    padding: 13px 20px;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.usuario:hover,
+.inicio:hover {
+    border-color: #ff7900;
+}
+
+/* LAYOUT */
+
+.layout {
+    display: flex;
+    min-height: calc(100vh - 118px);
+}
+
+/* MENU LATERAL */
+
+.sidebar {
+    width: 250px;
+    border-right: 1px solid #3a291c;
+    padding: 25px 16px;
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.menu a {
+    color: #bdbdbd;
+    text-decoration: none;
+    padding: 14px 15px;
+    border-radius: 6px;
+    font-size: 15px;
+}
+
+.menu a:hover {
+    color: white;
+    background: #17100b;
+}
+
+.menu .ativo {
+    color: #ff8a18;
+    background: #1c1007;
+    border: 1px solid #88430b;
+}
+
+.separador {
+    height: 1px;
+    background: #3a291c;
+    margin: 28px 0;
+}
+
+.modo {
+    color: #aaa;
+    padding: 12px 15px;
+    font-size: 15px;
+}
+
+.modo span {
+    color: #ff7900;
+}
+
+/* CONTEÚDO */
+
+.conteudo {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 60px 30px 30px;
+}
+
+/* V CENTRAL */
+
+.v-central {
+    width: 95px;
+    height: 95px;
+    border: 2px solid #ff7900;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ff7900;
+    font-size: 48px;
+    font-weight: bold;
+    margin-bottom: 25px;
+    box-shadow: 0 0 20px rgba(255,121,0,0.12);
+}
+
+/* TEXTO */
+
+h1 {
+    font-size: 34px;
+    margin-bottom: 14px;
+}
+
+h1 span {
+    color: #ff7900;
+}
+
+.status {
+    font-size: 19px;
+    margin-bottom: 12px;
+}
+
+.status span {
+    color: #ff7900;
+    font-weight: bold;
+}
+
+.descricao {
+    color: #aaa;
+    text-align: center;
+    max-width: 650px;
+    line-height: 1.6;
+    font-size: 16px;
+}
+
+/* CAIXA DE PERGUNTA */
+
+.pergunta-area {
+    width: min(945px, 100%);
+    margin-top: 45px;
+    border: 1px solid #8b430b;
+    border-radius: 8px;
+    padding: 14px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #0d0a08;
+}
+
+.estrela {
+    color: #ffb000;
+    font-size: 20px;
+}
+
+#pergunta {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    font-size: 16px;
+}
+
+#pergunta::placeholder {
+    color: #777;
+}
+
+#enviar {
+    width: 42px;
+    height: 42px;
+    border: none;
+    border-radius: 6px;
+    background: #ff7900;
+    color: black;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+#enviar:hover {
+    background: #ff8d26;
+}
+
+/* RESPOSTAS */
+
+#respostas {
+    width: min(945px, 100%);
+    margin-top: 20px;
+}
+
+.mensagem {
+    background: #0e0b09;
+    border: 1px solid #3a291c;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 10px;
+}
+
+.usuario-msg {
+    border-left: 3px solid #ff7900;
+}
+
+.bot-msg {
+    border-left: 3px solid #8b430b;
+}
+
+/* RODAPÉ */
+
+.rodape {
+    margin-top: auto;
+    padding-top: 45px;
+    color: #777;
+    font-size: 13px;
+}
+
+.rodape strong {
+    color: #ddd;
+}
+
+/* CELULAR */
+
+@media (max-width: 700px) {
 
     .topo {
-      height: 75px;
-      border-bottom: 1px solid #ff7a00;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 35px;
-      background: rgba(0, 0, 0, 0.92);
-      box-shadow: 0 0 20px rgba(255, 110, 0, 0.15);
+        height: 85px;
+        padding: 0 15px;
     }
 
     .logo {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-size: 25px;
-      font-weight: bold;
-      letter-spacing: 2px;
-    }
-
-    .logo-v {
-      width: 42px;
-      height: 42px;
-      border: 2px solid #ff7800;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #ff7800;
-      font-size: 25px;
-      box-shadow: 0 0 15px rgba(255, 120, 0, 0.5);
-    }
-
-    .logo span {
-      color: #ff7800;
-    }
-
-    .voltar {
-      text-decoration: none;
-      color: white;
-      border: 1px solid #ff7800;
-      padding: 10px 20px;
-      border-radius: 7px;
-      font-size: 14px;
-      transition: 0.2s;
-    }
-
-    .voltar:hover {
-      background: #ff7800;
-      color: black;
-      box-shadow: 0 0 15px rgba(255, 120, 0, 0.6);
-    }
-
-    /* ÁREA PRINCIPAL */
-
-    .principal {
-      height: calc(100vh - 75px);
-      display: flex;
-      justify-content: center;
-      padding: 25px;
-    }
-
-    .chat {
-      width: min(1000px, 100%);
-      height: 100%;
-      border: 1px solid #ff7800;
-      border-radius: 12px;
-      background: rgba(8, 8, 8, 0.95);
-      box-shadow:
-        0 0 25px rgba(255, 100, 0, 0.12),
-        inset 0 0 25px rgba(255, 100, 0, 0.03);
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-    }
-
-    /* CABEÇALHO DO CHAT */
-
-    .chat-header {
-      padding: 18px 25px;
-      border-bottom: 1px solid rgba(255, 120, 0, 0.5);
-      display: flex;
-      align-items: center;
-      gap: 15px;
-    }
-
-    .robot {
-      width: 48px;
-      height: 48px;
-      border: 2px solid #ff7800;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 23px;
-      box-shadow: 0 0 15px rgba(255, 120, 0, 0.35);
-    }
-
-    .chat-header h1 {
-      font-size: 18px;
-    }
-
-    .chat-header p {
-      color: #999;
-      font-size: 13px;
-      margin-top: 4px;
-    }
-
-    /* MENSAGENS */
-
-    .mensagens {
-      flex: 1;
-      padding: 25px;
-      overflow-y: auto;
-      display: flex;
-      flex-direction: column;
-      gap: 18px;
-    }
-
-    .mensagem {
-      max-width: 75%;
-      padding: 14px 17px;
-      border-radius: 10px;
-      line-height: 1.5;
-      font-size: 15px;
-    }
-
-    .bot {
-      align-self: flex-start;
-      border: 1px solid rgba(255, 120, 0, 0.45);
-      background: #101010;
+        font-size: 20px;
     }
 
     .usuario {
-      align-self: flex-end;
-      background: #ff7800;
-      color: black;
-      font-weight: 500;
+        display: none;
     }
 
-    /* SUGESTÕES */
-
-    .sugestoes {
-      padding: 0 25px 15px;
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
+    .layout {
+        min-height: calc(100vh - 85px);
     }
 
-    .sugestao {
-      background: transparent;
-      color: #ddd;
-      border: 1px solid #444;
-      border-radius: 20px;
-      padding: 8px 14px;
-      cursor: pointer;
-      transition: 0.2s;
-      font-size: 13px;
+    .sidebar {
+        display: none;
     }
 
-    .sugestao:hover {
-      border-color: #ff7800;
-      color: #ff7800;
+    .conteudo {
+        padding: 45px 18px 20px;
     }
 
-    /* ÁREA DE DIGITAÇÃO */
-
-    .entrada {
-      padding: 18px;
-      border-top: 1px solid rgba(255, 120, 0, 0.5);
-      display: flex;
-      gap: 10px;
-      background: #070707;
+    h1 {
+        font-size: 28px;
     }
 
-    #texto {
-      flex: 1;
-      background: #111;
-      border: 1px solid #444;
-      border-radius: 8px;
-      padding: 14px;
-      color: white;
-      outline: none;
-      font-size: 15px;
+    .descricao {
+        font-size: 14px;
     }
-
-    #texto:focus {
-      border-color: #ff7800;
-      box-shadow: 0 0 10px rgba(255, 120, 0, 0.15);
-    }
-
-    #enviar {
-      width: 55px;
-      border: none;
-      border-radius: 8px;
-      background: #ff7800;
-      color: black;
-      font-size: 20px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: 0.2s;
-    }
-
-    #enviar:hover {
-      transform: scale(1.04);
-      box-shadow: 0 0 18px rgba(255, 120, 0, 0.5);
-    }
-
-    /* CELULAR */
-
-    @media (max-width: 600px) {
-
-      .topo {
-        padding: 0 15px;
-      }
-
-      .logo {
-        font-size: 20px;
-      }
-
-      .voltar {
-        padding: 8px 12px;
-      }
-
-      .principal {
-        padding: 10px;
-      }
-
-      .mensagem {
-        max-width: 88%;
-      }
-
-      .sugestoes {
-        padding: 0 12px 12px;
-      }
-
-      .entrada {
-        padding: 12px;
-      }
-    }
-  </style>
+}
+</style>
 </head>
 
 <body>
 
-  <header class="topo">
+<header class="topo">
 
     <div class="logo">
-      <div class="logo-v">V</div>
-      VETRIX <span>AI</span>
+        <div class="logo-v">V</div>
+        <div>
+            VETRIX <span class="logo-ai">AI</span>
+        </div>
     </div>
 
-    <a href="index.html" class="voltar">
-      ← Início
-    </a>
+    <div class="topo-direita">
+        <div class="usuario">👤 Luís⌄</div>
 
-  </header>
+        <a href="index.html" class="inicio">
+            🏠 INÍCIO
+        </a>
+    </div>
+
+</header>
 
 
-  <main class="principal">
+<div class="layout">
 
-    <section class="chat">
+    <aside class="sidebar">
 
-      <div class="chat-header">
+        <nav class="menu">
 
-        <div class="robot">🤖</div>
+            <a href="chat.html" class="ativo">
+                🏠 Início
+            </a>
 
-        <div>
-          <h1>Vetrix AI</h1>
-          <p>Seu assistente de estudos</p>
+            <a href="chat.html">
+                💬 Nova conversa
+            </a>
+
+            <a href="#">
+                📖 Histórico
+            </a>
+
+            <a href="#">
+                ⚙️ Configurações
+            </a>
+
+            <a href="#">
+                ❓ Ajuda
+            </a>
+
+        </nav>
+
+        <div class="separador"></div>
+
+        <div class="modo">
+            🎓 <span>Modo Estudo</span>
         </div>
 
-      </div>
+    </aside>
 
 
-      <div class="mensagens" id="mensagens">
+    <main class="conteudo">
 
-        <div class="mensagem bot">
-          👋 Olá! Eu sou o <strong>Vetrix AI</strong>.<br><br>
-          Posso ajudar você a estudar, explicar assuntos,
-          criar exercícios, fazer resumos e muito mais.
-          <br><br>
-          O que você quer estudar hoje?
+        <div class="v-central">
+            V
         </div>
 
-      </div>
+        <h1>
+            Olá, <span>Luís!</span>
+        </h1>
+
+        <div class="status">
+            Você está no <span>modo normal.</span>
+        </div>
+
+        <p class="descricao">
+            Pode fazer perguntas, tirar dúvidas, pedir ideias,
+            conversar e muito mais. Estou aqui para te ajudar!
+        </p>
 
 
-      <div class="sugestoes">
+        <div class="pergunta-area">
 
-        <button class="sugestao" onclick="sugestao('Explique matemática para mim')">
-          📐 Matemática
-        </button>
+            <div class="estrela">✨</div>
 
-        <button class="sugestao" onclick="sugestao('Me ajude com História')">
-          🏛️ História
-        </button>
+            <input
+                id="pergunta"
+                type="text"
+                placeholder="Digite sua pergunta..."
+            >
 
-        <button class="sugestao" onclick="sugestao('Me ajude com Português')">
-          📖 Português
-        </button>
+            <button id="enviar" onclick="enviarPergunta()">
+                ➤
+            </button>
 
-        <button class="sugestao" onclick="sugestao('Crie exercícios para eu estudar')">
-          📝 Exercícios
-        </button>
-
-        <button class="sugestao" onclick="sugestao('Faça um resumo para mim')">
-          📚 Resumo
-        </button>
-
-      </div>
+        </div>
 
 
-      <div class="entrada">
-
-        <input
-          id="texto"
-          type="text"
-          placeholder="Digite sua pergunta..."
-          autocomplete="off"
-        >
-
-        <button id="enviar" onclick="enviarMensagem()">
-          ➤
-        </button>
-
-      </div>
-
-    </section>
-
-  </main>
+        <div id="respostas"></div>
 
 
-  <script>
+        <div class="rodape">
+            Feito por <strong>Luís Felipe Lira e Daniel Perez.</strong>
+        </div>
 
-    const texto = document.getElementById("texto");
-    const mensagens = document.getElementById("mensagens");
+    </main>
 
-
-    function adicionarMensagem(conteudo, tipo) {
-
-      const div = document.createElement("div");
-
-      div.className = "mensagem " + tipo;
-
-      div.innerHTML = conteudo;
-
-      mensagens.appendChild(div);
-
-      mensagens.scrollTop = mensagens.scrollHeight;
-    }
+</div>
 
 
-    function responder(pergunta) {
+<script>
 
-      const p = pergunta.toLowerCase();
+function enviarPergunta() {
 
-      if (
-        p.includes("oi") ||
-        p.includes("olá") ||
-        p.includes("ola")
-      ) {
-        return "Olá! 👋 Que bom ter você aqui. O que vamos estudar hoje?";
-      }
+    const campo = document.getElementById("pergunta");
+    const texto = campo.value.trim();
 
-      if (p.includes("matemática") || p.includes("matematica")) {
-        return "📐 Claro! Posso ajudar com matemática. Me diga qual assunto você está estudando.";
-      }
-
-      if (p.includes("história") || p.includes("historia")) {
-        return "🏛️ Posso explicar História de forma simples e organizada. Qual período ou assunto você quer estudar?";
-      }
-
-      if (p.includes("português") || p.includes("portugues")) {
-        return "📖 Vamos estudar Português! Posso ajudar com gramática, interpretação de texto, literatura e muito mais.";
-      }
-
-      if (p.includes("exercício") || p.includes("exercicio")) {
-        return "📝 Posso criar exercícios para você. Me diga a matéria e o assunto.";
-      }
-
-      if (p.includes("resumo")) {
-        return "📚 Posso fazer um resumo. Mande o texto ou diga qual assunto você quer resumir.";
-      }
-
-      if (p.includes("quem criou") || p.includes("criador")) {
-        return "🤖 Fui criado por Luís Felipe Lira e Daniel Perez.";
-      }
-
-      if (p.includes("seu nome")) {
-        return "Meu nome é Vetrix AI. 🧠";
-      }
-
-      return "Entendi! 🤖 Me conte um pouco mais sobre o que você precisa estudar e vou tentar ajudar.";
-    }
-
-
-    function enviarMensagem() {
-
-      const pergunta = texto.value.trim();
-
-      if (pergunta === "") {
+    if (texto === "") {
         return;
-      }
-
-      adicionarMensagem(pergunta, "usuario");
-
-      texto.value = "";
-
-      setTimeout(() => {
-
-        const resposta = responder(pergunta);
-
-        adicionarMensagem(resposta, "bot");
-
-      }, 500);
     }
 
+    const respostas = document.getElementById("respostas");
 
-    function sugestao(pergunta) {
+    const usuario = document.createElement("div");
+    usuario.className = "mensagem usuario-msg";
+    usuario.textContent = texto;
 
-      texto.value = pergunta;
+    respostas.appendChild(usuario);
 
-      enviarMensagem();
+    campo.value = "";
 
-    }
+    const resposta = document.createElement("div");
+    resposta.className = "mensagem bot-msg";
+    resposta.textContent =
+        "Recebi sua pergunta! Quando a API do Vetrix estiver conectada, vou poder responder de verdade. 🤖";
 
+    respostas.appendChild(resposta);
 
-    texto.addEventListener("keydown", function(event) {
-
-      if (event.key === "Enter") {
-        enviarMensagem();
-      }
-
+    resposta.scrollIntoView({
+        behavior: "smooth"
     });
+}
 
-  </script>
+
+document.getElementById("pergunta").addEventListener(
+    "keydown",
+    function(event) {
+
+        if (event.key === "Enter") {
+            enviarPergunta();
+        }
+
+    }
+);
+
+</script>
 
 </body>
 </html>
