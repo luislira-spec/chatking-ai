@@ -1,6 +1,3 @@
-
-
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -10,17 +7,16 @@
 <title>Vetrix AI</title>
 
 <style>
-
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
 body {
     background: #080706;
-    color: #eeeeee;
-    font-family: Arial, Helvetica, sans-serif;
+    color: #f2ede6;
+    font-family: "Segoe UI", Arial, sans-serif;
     min-height: 100vh;
 }
 
@@ -28,68 +24,81 @@ body {
    TOPO
 ========================= */
 
-.topo {
+.topbar {
     height: 118px;
-    border-bottom: 1px solid #392719;
+    border-bottom: 1px solid #3a2416;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 31px;
+
+    padding: 0 32px;
 }
 
 .logo {
     display: flex;
     align-items: center;
-    gap: 11px;
-    font-size: 24px;
-    font-weight: bold;
+    gap: 12px;
+
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
 }
 
 .logo-v {
-    width: 40px;
-    height: 40px;
-    border: 2px solid #ff7900;
+    width: 42px;
+    height: 42px;
+
+    border: 2px solid #ff7a1a;
     border-radius: 50%;
+
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #ff7900;
+
+    color: #ff7a1a;
     font-size: 25px;
+    font-weight: bold;
 }
 
-.logo-ai {
-    color: #ff7900;
+.ai {
+    color: #ff7a1a;
 }
 
-.topo-direita {
+.topbar-right {
     display: flex;
-    gap: 14px;
+    gap: 12px;
 }
 
-.usuario,
-.inicio {
-    height: 49px;
-    border: 1px solid #88450d;
+.top-btn {
+    border: 1px solid #7a4420;
     border-radius: 6px;
-    background: #090807;
-    color: #eeeeee;
-    display: flex;
-    align-items: center;
-    padding: 0 18px;
+
+    padding: 12px 18px;
+
+    color: #f2ede6;
+    background: transparent;
+
     text-decoration: none;
     font-size: 14px;
+
+    cursor: pointer;
 }
 
-.usuario:hover,
-.inicio:hover {
-    border-color: #ff7900;
+.top-btn:hover {
+    border-color: #ff7a1a;
+}
+
+.top-btn.inicio {
+    border-color: #ff7a1a;
+    color: #ff7a1a;
 }
 
 /* =========================
-   LAYOUT
+   CORPO
 ========================= */
 
-.layout {
+.body-layout {
     display: flex;
     min-height: calc(100vh - 118px);
 }
@@ -100,214 +109,232 @@ body {
 
 .sidebar {
     width: 250px;
+
+    border-right: 1px solid #3a2416;
+
+    padding: 24px 16px;
+
     flex-shrink: 0;
-    border-right: 1px solid #392719;
-    padding: 25px 16px;
 }
 
-.menu {
+.nav-item {
     display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
+    align-items: center;
+    gap: 12px;
 
-.menu a {
-    text-decoration: none;
-    color: #bdbdbd;
-    font-size: 15px;
-    padding: 14px 16px;
+    padding: 13px 14px;
+
     border-radius: 6px;
-    display: block;
-}
 
-.menu a:hover {
-    color: white;
-    background: #15100c;
-}
+    color: #a89a8c;
 
-.menu .ativo {
-    color: #ff8a19;
-    background: #1c1008;
-    border: 1px solid #87430c;
-}
-
-.separador {
-    height: 1px;
-    background: #392719;
-    margin: 30px 25px;
-}
-
-.modo {
-    color: #bbbbbb;
-    padding: 10px 18px;
     font-size: 15px;
+
+    margin-bottom: 6px;
+
+    cursor: pointer;
 }
 
-.modo span {
-    color: #ff7900;
+.nav-item:hover {
+    background: rgba(255,122,26,0.06);
+    color: #f2ede6;
+}
+
+.nav-item.active {
+    background: rgba(255,122,26,0.09);
+
+    border: 1px solid #7a4420;
+
+    color: #ff7a1a;
 }
 
 /* =========================
-   CONTEÚDO PRINCIPAL
+   ÁREA PRINCIPAL
 ========================= */
 
-.conteudo {
+.main {
     flex: 1;
+
+    padding: 60px 40px;
+
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 62px 35px 25px;
+
+    text-align: center;
 }
 
 /* LOGO CENTRAL */
 
-.logo-central {
-    width: 96px;
-    height: 96px;
-    border: 2px solid #ff7900;
+.hero-logo {
+    width: 120px;
+    height: 120px;
+
+    border: 2px solid #ff7a1a;
     border-radius: 50%;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    color: #ff7900;
-    font-size: 48px;
+    color: #ff7a1a;
+
+    font-size: 58px;
     font-weight: bold;
 
-    margin-bottom: 25px;
+    margin-bottom: 22px;
 }
 
 /* TÍTULO */
 
-.titulo {
-    font-size: 34px;
-    margin-bottom: 14px;
-}
-
-.titulo span {
-    color: #ff7900;
-}
-
-.status {
-    font-size: 19px;
+h1 {
+    font-size: 36px;
     margin-bottom: 12px;
 }
 
-.status span {
-    color: #ff7900;
-    font-weight: bold;
+h1 span {
+    color: #ff7a1a;
 }
 
-.descricao {
-    max-width: 700px;
-    text-align: center;
-    color: #999999;
-    font-size: 16px;
+.subtitle {
+    font-size: 19px;
+    margin-bottom: 10px;
+}
+
+.subtitle span {
+    color: #ff7a1a;
+    font-weight: 600;
+}
+
+.description {
+    max-width: 620px;
+
+    color: #a89a8c;
+
+    font-size: 15px;
+
     line-height: 1.6;
+
+    margin-bottom: 42px;
 }
 
 /* =========================
    CAIXA DE PERGUNTA
 ========================= */
 
-.caixa-pergunta {
-    width: min(945px, 100%);
-    height: 72px;
-
-    margin-top: 46px;
-
-    border: 1px solid #8b470d;
-    border-radius: 9px;
-
-    background: #0d0a08;
+.input-row {
+    width: 100%;
+    max-width: 900px;
 
     display: flex;
     align-items: center;
 
-    padding: 10px 12px 10px 20px;
+    gap: 12px;
+
+    border: 1px solid #7a4420;
+
+    border-radius: 8px;
+
+    padding: 12px 14px 12px 18px;
+
+    background: #120d0a;
 }
 
-.icone {
-    font-size: 21px;
-    margin-right: 14px;
+.input-icon {
+    font-size: 20px;
 }
 
 #pergunta {
     flex: 1;
 
-    height: 100%;
+    height: 44px;
 
     background: transparent;
+
     border: none;
     outline: none;
 
-    color: white;
-    font-size: 16px;
+    color: #f2ede6;
+
+    font-size: 15px;
 }
 
 #pergunta::placeholder {
-    color: #777777;
+    color: #756a61;
 }
 
-#enviar {
+.send-btn {
     width: 42px;
     height: 42px;
 
     border: none;
+
     border-radius: 6px;
 
-    background: #ff7900;
-    color: black;
+    background: #ff7a1a;
 
-    font-size: 20px;
+    color: #1a0e05;
+
+    font-size: 18px;
+
     cursor: pointer;
 }
 
-#enviar:hover {
-    background: #ff8b20;
+.send-btn:hover {
+    opacity: 0.9;
 }
 
 /* =========================
-   MENSAGENS
+   RESPOSTAS
 ========================= */
 
-.respostas {
-    width: min(945px, 100%);
+#respostas {
+    width: 100%;
+    max-width: 900px;
+
     margin-top: 20px;
 }
 
 .mensagem {
-    padding: 14px 17px;
-    border: 1px solid #392719;
-    border-radius: 7px;
+    text-align: left;
+
+    padding: 15px 18px;
+
     margin-bottom: 10px;
-    background: #0c0a09;
+
+    border: 1px solid #3a2416;
+
+    border-radius: 7px;
+
+    background: #100c09;
+
     line-height: 1.5;
 }
 
 .mensagem.usuario {
-    border-left: 3px solid #ff7900;
+    border-left: 3px solid #ff7a1a;
 }
 
 .mensagem.vetrix {
-    border-left: 3px solid #70400e;
+    border-left: 3px solid #7a4420;
 }
 
 /* =========================
    RODAPÉ
 ========================= */
 
-.rodape {
+.footer {
     margin-top: auto;
+
     padding-top: 45px;
 
-    color: #777777;
+    color: #756a61;
+
     font-size: 13px;
 }
 
-.rodape strong {
-    color: #dddddd;
+.footer b {
+    color: #f2ede6;
 }
 
 /* =========================
@@ -316,7 +343,7 @@ body {
 
 @media (max-width: 700px) {
 
-    .topo {
+    .topbar {
         height: 80px;
         padding: 0 15px;
     }
@@ -326,8 +353,8 @@ body {
     }
 
     .logo-v {
-        width: 34px;
-        height: 34px;
+        width: 35px;
+        height: 35px;
         font-size: 20px;
     }
 
@@ -335,63 +362,58 @@ body {
         display: none;
     }
 
-    .layout {
-        min-height: calc(100vh - 80px);
-    }
-
     .sidebar {
         display: none;
     }
 
-    .conteudo {
+    .body-layout {
+        min-height: calc(100vh - 80px);
+    }
+
+    .main {
         padding: 45px 18px 20px;
     }
 
-    .titulo {
-        font-size: 28px;
+    .hero-logo {
+        width: 90px;
+        height: 90px;
+        font-size: 44px;
     }
 
-    .descricao {
+    h1 {
+        font-size: 29px;
+    }
+
+    .description {
         font-size: 14px;
     }
-
-    .caixa-pergunta {
-        margin-top: 35px;
-    }
-
 }
-
 </style>
 </head>
 
-
 <body>
 
+<!-- TOPO -->
 
-<!-- =========================
-     TOPO
-========================= -->
-
-<header class="topo">
+<header class="topbar">
 
     <div class="logo">
 
         <div class="logo-v">V</div>
 
         <div>
-            VETRIX <span class="logo-ai">AI</span>
+            VETRIX <span class="ai">AI</span>
         </div>
 
     </div>
 
+    <div class="topbar-right">
 
-    <div class="topo-direita">
-
-        <div class="usuario">
+        <div class="top-btn">
             👤 Luís⌄
         </div>
 
-        <a href="index.html" class="inicio">
+        <a href="index.html" class="top-btn inicio">
             🏠 INÍCIO
         </a>
 
@@ -400,89 +422,70 @@ body {
 </header>
 
 
+<!-- CORPO -->
 
-<!-- =========================
-     LAYOUT
-========================= -->
-
-<div class="layout">
+<div class="body-layout">
 
 
     <!-- MENU -->
 
     <aside class="sidebar">
 
-        <nav class="menu">
+        <div class="nav-item active">
+            🏠 Início
+        </div>
 
-            <a href="chat.html" class="ativo">
-                🏠 Início
-            </a>
+        <div class="nav-item" onclick="novaConversa()">
+            💬 Nova conversa
+        </div>
 
-            <a href="chat.html">
-                💬 Nova conversa
-            </a>
+        <div class="nav-item">
+            📖 Histórico
+        </div>
 
-            <a href="#">
-                📖 Histórico
-            </a>
+        <div class="nav-item">
+            ⚙️ Configurações
+        </div>
 
-            <a href="#">
-                ⚙️ Configurações
-            </a>
-
-            <a href="#">
-                ❓ Ajuda
-            </a>
-
-        </nav>
-
-
-        <div class="separador"></div>
-
-
-        <div class="modo">
-            🎓 <span>Modo Estudo</span>
+        <div class="nav-item">
+            ❓ Ajuda
         </div>
 
     </aside>
 
 
+    <!-- PRINCIPAL -->
 
-    <!-- CONTEÚDO -->
+    <main class="main">
 
-    <main class="conteudo">
-
-
-        <div class="logo-central">
+        <div class="hero-logo">
             V
         </div>
 
 
-        <h1 class="titulo">
+        <h1>
             Olá, <span>Luís!</span>
         </h1>
 
 
-        <div class="status">
+        <div class="subtitle">
             Você está no <span>modo normal.</span>
         </div>
 
 
-        <p class="descricao">
+        <p class="description">
             Pode fazer perguntas, tirar dúvidas, pedir ideias,
             conversar e muito mais. Estou aqui para te ajudar!
         </p>
 
 
+        <!-- PERGUNTA -->
 
-        <!-- CAIXA DE PERGUNTA -->
+        <div class="input-row">
 
-        <div class="caixa-pergunta">
-
-            <div class="icone">
+            <div class="input-icon">
                 ✨
             </div>
-
 
             <input
                 id="pergunta"
@@ -490,33 +493,30 @@ body {
                 placeholder="Digite sua pergunta..."
             >
 
-
-            <button id="enviar" onclick="enviarPergunta()">
+            <button
+                class="send-btn"
+                onclick="enviarPergunta()"
+            >
                 ➤
             </button>
 
         </div>
 
 
-
         <!-- RESPOSTAS -->
 
-        <div class="respostas" id="respostas"></div>
-
+        <div id="respostas"></div>
 
 
         <!-- RODAPÉ -->
 
-        <div class="rodape">
-            Feito por
-            <strong>Luís Felipe Lira e Daniel Perez.</strong>
+        <div class="footer">
+            Feito por <b>Luís Felipe Lira e Daniel Perez.</b>
         </div>
-
 
     </main>
 
 </div>
-
 
 
 <script>
@@ -530,7 +530,6 @@ function enviarPergunta() {
     if (texto === "") {
         return;
     }
-
 
     const respostas = document.getElementById("respostas");
 
@@ -552,7 +551,7 @@ function enviarPergunta() {
     resposta.className = "mensagem vetrix";
 
     resposta.textContent =
-        "Recebi sua pergunta! A conexão com a inteligência do Vetrix será adicionada quando a API estiver configurada. 🤖";
+        "Recebi sua pergunta! A inteligência do Vetrix será conectada quando a API estiver configurada.";
 
     respostas.appendChild(resposta);
 
@@ -560,23 +559,30 @@ function enviarPergunta() {
     resposta.scrollIntoView({
         behavior: "smooth"
     });
-
 }
 
 
-document.getElementById("pergunta").addEventListener(
-    "keydown",
-    function(event) {
+function novaConversa() {
+
+    document.getElementById("respostas").innerHTML = "";
+
+    document.getElementById("pergunta").value = "";
+
+    document.getElementById("pergunta").focus();
+}
+
+
+document
+    .getElementById("pergunta")
+    .addEventListener("keydown", function(event) {
 
         if (event.key === "Enter") {
             enviarPergunta();
         }
 
-    }
-);
+    });
 
 </script>
-
 
 </body>
 </html>
