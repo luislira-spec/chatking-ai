@@ -25,7 +25,7 @@ body {
 ========================= */
 
 .topbar {
-    height: 118px;
+    height: 90px;
     border-bottom: 1px solid #3a2416;
 
     display: flex;
@@ -45,20 +45,12 @@ body {
     letter-spacing: 0.5px;
 }
 
-.logo-v {
-    width: 42px;
-    height: 42px;
+.logo img {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
 
-    border: 2px solid #ff7a1a;
-    border-radius: 50%;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    color: #ff7a1a;
-    font-size: 25px;
-    font-weight: bold;
+    filter: drop-shadow(0 0 8px rgba(255,122,26,0.25));
 }
 
 .ai {
@@ -74,7 +66,7 @@ body {
     border: 1px solid #7a4420;
     border-radius: 6px;
 
-    padding: 12px 18px;
+    padding: 11px 17px;
 
     color: #f2ede6;
     background: transparent;
@@ -100,7 +92,7 @@ body {
 
 .body-layout {
     display: flex;
-    min-height: calc(100vh - 118px);
+    min-height: calc(100vh - 90px);
 }
 
 /* =========================
@@ -155,7 +147,7 @@ body {
 .main {
     flex: 1;
 
-    padding: 60px 40px;
+    padding: 55px 40px;
 
     display: flex;
     flex-direction: column;
@@ -164,28 +156,33 @@ body {
     text-align: center;
 }
 
-/* LOGO CENTRAL */
+/* =========================
+   LOGO CENTRAL
+========================= */
 
 .hero-logo {
-    width: 120px;
-    height: 120px;
-
-    border: 2px solid #ff7a1a;
-    border-radius: 50%;
+    width: 130px;
+    height: 130px;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    color: #ff7a1a;
-
-    font-size: 58px;
-    font-weight: bold;
-
-    margin-bottom: 22px;
+    margin-bottom: 20px;
 }
 
-/* TÍTULO */
+.hero-logo img {
+    width: 130px;
+    height: 130px;
+
+    object-fit: contain;
+
+    filter: drop-shadow(0 0 12px rgba(255,122,26,0.25));
+}
+
+/* =========================
+   TÍTULO
+========================= */
 
 h1 {
     font-size: 36px;
@@ -238,6 +235,11 @@ h1 span {
     padding: 12px 14px 12px 18px;
 
     background: #120d0a;
+}
+
+.input-row:focus-within {
+    border-color: #ff7a1a;
+    box-shadow: 0 0 0 2px rgba(255,122,26,0.08);
 }
 
 .input-icon {
@@ -352,14 +354,18 @@ h1 span {
         font-size: 19px;
     }
 
-    .logo-v {
-        width: 35px;
-        height: 35px;
-        font-size: 20px;
+    .logo img {
+        width: 38px;
+        height: 38px;
     }
 
-    .usuario {
-        display: none;
+    .topbar-right {
+        gap: 5px;
+    }
+
+    .top-btn {
+        padding: 9px 10px;
+        font-size: 12px;
     }
 
     .sidebar {
@@ -374,10 +380,10 @@ h1 span {
         padding: 45px 18px 20px;
     }
 
-    .hero-logo {
-        width: 90px;
-        height: 90px;
-        font-size: 44px;
+    .hero-logo,
+    .hero-logo img {
+        width: 95px;
+        height: 95px;
     }
 
     h1 {
@@ -393,13 +399,15 @@ h1 span {
 
 <body>
 
-<!-- TOPO -->
+<!-- =========================
+     TOPO
+========================= -->
 
 <header class="topbar">
 
     <div class="logo">
 
-        <div class="logo-v">V</div>
+        <img src="vetrix-logo.png" alt="Logo Vetrix AI">
 
         <div>
             VETRIX <span class="ai">AI</span>
@@ -422,12 +430,14 @@ h1 span {
 </header>
 
 
-<!-- CORPO -->
+<!-- =========================
+     CORPO
+========================= -->
 
 <div class="body-layout">
 
 
-    <!-- MENU -->
+    <!-- MENU LATERAL -->
 
     <aside class="sidebar">
 
@@ -454,12 +464,17 @@ h1 span {
     </aside>
 
 
-    <!-- PRINCIPAL -->
+    <!-- ÁREA PRINCIPAL -->
 
     <main class="main">
 
         <div class="hero-logo">
-            V
+
+            <img
+                src="vetrix-logo.png"
+                alt="Vetrix AI"
+            >
+
         </div>
 
 
@@ -469,7 +484,7 @@ h1 span {
 
 
         <div class="subtitle">
-            Você está no <span>modo normal.</span>
+            Você está no <span>modo base.</span>
         </div>
 
 
@@ -479,7 +494,7 @@ h1 span {
         </p>
 
 
-        <!-- PERGUNTA -->
+        <!-- CAIXA DE PERGUNTA -->
 
         <div class="input-row">
 
@@ -534,6 +549,8 @@ function enviarPergunta() {
     const respostas = document.getElementById("respostas");
 
 
+    // PERGUNTA DO USUÁRIO
+
     const pergunta = document.createElement("div");
 
     pergunta.className = "mensagem usuario";
@@ -545,6 +562,8 @@ function enviarPergunta() {
 
     campo.value = "";
 
+
+    // RESPOSTA TEMPORÁRIA
 
     const resposta = document.createElement("div");
 
@@ -577,7 +596,9 @@ document
     .addEventListener("keydown", function(event) {
 
         if (event.key === "Enter") {
+
             enviarPergunta();
+
         }
 
     });
