@@ -1,621 +1,656 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vetrix AI</title>
+
+<title>Chat — Vetrix AI</title>
+
+<!-- Ícone da aba -->
+<link rel="icon" type="image/png" href="vetrix-logo-final.png">
+<link rel="shortcut icon" type="image/png" href="vetrix-logo-final.png">
 
 <style>
+
 :root{
-  --bg:#0a0806;
-  --panel:#120d0a;
-  --panel2:#17100c;
-  --border:#3a2416;
-  --orange:#ff7a1a;
-  --orange2:#ff9a45;
-  --text:#f2ede6;
-  --dim:#a89a8c;
-  --danger:#d94b4b;
+    --bg:#090807;
+    --panel:#110d0a;
+    --panel2:#15100c;
+    --border:#3a2518;
+    --orange:#ff7a1a;
+    --text:#f4eee8;
+    --dim:#a99b8f;
 }
 
 *{
-  box-sizing:border-box;
+    box-sizing:border-box;
 }
 
 body{
-  margin:0;
-  min-height:100vh;
-  background:var(--bg);
-  color:var(--text);
-  font-family:"Segoe UI",system-ui,sans-serif;
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:"Segoe UI",system-ui,-apple-system,sans-serif;
 }
 
 /* TOPO */
 
 .topbar{
-  height:90px;
-  padding:12px 28px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  border-bottom:1px solid var(--border);
-  background:#0d0907;
+    height:82px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 28px;
+    border-bottom:1px solid var(--border);
+    background:#0d0907;
 }
 
 .logo{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  font-size:22px;
-  font-weight:700;
+    display:flex;
+    align-items:center;
+    gap:11px;
+    font-size:21px;
+    font-weight:750;
 }
 
 .logo img{
-  width:67px;
-  height:67px;
-  object-fit:contain;
+    width:67px;
+    height:67px;
+    object-fit:contain;
 }
 
-.ai,
-.mode{
-  color:var(--orange);
+.ai{
+    color:var(--orange);
 }
 
-.topbar-right{
-  display:flex;
-  gap:10px;
+.top-actions{
+    display:flex;
+    gap:9px;
 }
 
 .pill{
-  padding:9px 15px;
-  border:1px solid #7a4420;
-  border-radius:7px;
-  background:transparent;
-  color:var(--text);
-  cursor:pointer;
+    padding:9px 14px;
+    border:1px solid var(--border);
+    border-radius:8px;
+    background:transparent;
+    color:var(--text);
+    cursor:pointer;
 }
 
 .pill:hover{
-  background:rgba(255,122,26,.08);
+    border-color:var(--orange);
 }
 
 /* LAYOUT */
 
 .layout{
-  display:flex;
-  min-height:calc(100vh - 90px);
+    display:flex;
+    min-height:calc(100vh - 82px);
 }
 
+/* SIDEBAR */
+
 .sidebar{
-  width:250px;
-  padding:24px 16px;
-  border-right:1px solid var(--border);
-  background:#0d0907;
+    width:250px;
+    padding:22px 15px;
+    border-right:1px solid var(--border);
+    background:#0d0907;
 }
 
 .nav{
-  width:100%;
-  padding:12px 14px;
-  margin-bottom:6px;
-  text-align:left;
-  border:1px solid transparent;
-  border-radius:7px;
-  background:transparent;
-  color:var(--dim);
-  cursor:pointer;
-  font-size:14px;
+    width:100%;
+    padding:12px 14px;
+    margin-bottom:7px;
+    text-align:left;
+    border:1px solid transparent;
+    border-radius:8px;
+    background:transparent;
+    color:var(--dim);
+    cursor:pointer;
+    font-size:14px;
 }
 
 .nav:hover,
 .nav.active{
-  border-color:#7a4420;
-  color:var(--orange);
-  background:rgba(255,122,26,.08);
+    border-color:#70401f;
+    color:var(--orange);
+    background:rgba(255,122,26,.07);
 }
 
-.modeBtn{
-  margin-top:16px;
-  padding-top:16px;
-  border-top:1px solid var(--border);
+.mode-area{
+    margin-top:18px;
+    padding-top:18px;
+    border-top:1px solid var(--border);
 }
 
-/* CONTEÚDO */
+/* MAIN */
 
 .main{
-  flex:1;
-  padding:55px 40px;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  text-align:center;
+    flex:1;
+    min-width:0;
+    padding:48px 30px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
 }
 
-.hero{
-  width:145px;
-  height:145px;
-  object-fit:contain;
+.hero-logo{
+    width:145px;
+    height:145px;
+    object-fit:contain;
 }
 
 h1{
-  font-size:34px;
-  margin:8px 0;
+    font-size:34px;
+    margin:8px 0 5px;
 }
 
-.main > p{
-  margin:7px 0;
+.mode-text{
+    color:var(--dim);
+    margin:0 0 10px;
 }
 
-.desc{
-  max-width:700px;
-  color:var(--dim);
-  line-height:1.6;
-  margin:0 0 28px;
+.mode{
+    color:var(--orange);
 }
 
-/* BOTÕES RÁPIDOS */
+.description{
+    max-width:700px;
+    color:var(--dim);
+    line-height:1.6;
+    margin:0 0 26px;
+}
+
+/* QUICK */
 
 .quick{
-  display:flex;
-  flex-wrap:wrap;
-  gap:10px;
-  justify-content:center;
-  margin-bottom:28px;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:9px;
+    margin-bottom:25px;
 }
 
 .quick button{
-  padding:9px 14px;
-  border:1px solid var(--border);
-  border-radius:7px;
-  background:var(--panel);
-  color:var(--dim);
-  cursor:pointer;
+    padding:9px 14px;
+    border:1px solid var(--border);
+    border-radius:8px;
+    background:var(--panel);
+    color:var(--dim);
+    cursor:pointer;
 }
 
 .quick button:hover{
-  border-color:#7a4420;
-  color:var(--orange);
+    color:var(--text);
+    border-color:#70401f;
 }
 
-/* CAIXA DE PERGUNTA */
+/* INPUT */
 
-.input{
-  width:min(900px,100%);
-  display:flex;
-  gap:10px;
-  padding:12px 14px;
-  border:1px solid #7a4420;
-  border-radius:9px;
-  background:var(--panel);
+.input-box{
+    width:min(900px,100%);
+    display:flex;
+    gap:10px;
+    padding:12px 13px;
+    border:1px solid #70401f;
+    border-radius:10px;
+    background:var(--panel);
 }
 
 textarea{
-  flex:1;
-  resize:none;
-  min-height:28px;
-  background:transparent;
-  border:0;
-  outline:0;
-  color:var(--text);
-  font-family:inherit;
-  font-size:15px;
+    flex:1;
+    min-height:30px;
+    max-height:180px;
+    resize:none;
+    border:0;
+    outline:0;
+    background:transparent;
+    color:var(--text);
+    font:inherit;
+}
+
+textarea::placeholder{
+    color:#766a60;
 }
 
 .send{
-  width:42px;
-  border:0;
-  border-radius:7px;
-  background:var(--orange);
-  color:#1a0e05;
-  font-size:20px;
-  cursor:pointer;
+    width:42px;
+    height:42px;
+    border:0;
+    border-radius:8px;
+    background:var(--orange);
+    color:#1b0c05;
+    font-weight:bold;
+    cursor:pointer;
 }
 
 .send:hover{
-  background:var(--orange2);
+    filter:brightness(1.08);
 }
 
 /* RESPOSTA */
 
 .response{
-  display:none;
-  width:min(900px,100%);
-  margin-top:18px;
-  padding:20px;
-  border:1px solid var(--border);
-  border-radius:9px;
-  background:var(--panel);
-  text-align:left;
-  line-height:1.6;
+    display:none;
+    width:min(900px,100%);
+    margin-top:18px;
+    padding:20px;
+    border:1px solid var(--border);
+    border-radius:10px;
+    background:var(--panel);
+    text-align:left;
+    line-height:1.6;
 }
 
 /* ONBOARDING */
 
 .overlay{
-  position:fixed;
-  inset:0;
-  z-index:99;
-  display:none;
-  align-items:center;
-  justify-content:center;
-  padding:20px;
-  background:rgba(0,0,0,.84);
-  backdrop-filter:blur(5px);
+    position:fixed;
+    inset:0;
+    z-index:100;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    background:rgba(0,0,0,.86);
+    backdrop-filter:blur(6px);
 }
 
 .overlay.show{
-  display:flex;
+    display:flex;
 }
 
 .card{
-  width:min(700px,100%);
-  max-height:90vh;
-  overflow:auto;
-  padding:30px;
-  border:1px solid #7a4420;
-  border-radius:14px;
-  background:#110b08;
-  box-shadow:0 20px 70px #000;
+    width:min(700px,100%);
+    max-height:90vh;
+    overflow:auto;
+    padding:30px;
+    border:1px solid #70401f;
+    border-radius:14px;
+    background:#110b08;
+    box-shadow:0 25px 80px #000;
 }
 
 .progress{
-  height:4px;
-  background:#291b12;
-  margin-bottom:25px;
-  border-radius:9px;
+    height:4px;
+    margin-bottom:25px;
+    border-radius:20px;
+    background:#291b12;
 }
 
 .bar{
-  height:100%;
-  width:50%;
-  background:var(--orange);
-  transition:.3s;
+    height:100%;
+    width:50%;
+    background:var(--orange);
+    border-radius:20px;
 }
 
 h2{
-  margin:0 0 9px;
+    margin:0 0 8px;
 }
 
 .sub{
-  color:var(--dim);
-  line-height:1.5;
-  margin-bottom:22px;
+    color:var(--dim);
+    line-height:1.5;
+    margin-bottom:22px;
 }
 
 /* OPÇÕES */
 
 .options,
 .goals{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:10px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
 }
 
 .option,
 .goal{
-  padding:15px;
-  border:1px solid var(--border);
-  border-radius:9px;
-  background:var(--panel);
-  color:var(--text);
-  text-align:left;
-  cursor:pointer;
+    padding:15px;
+    border:1px solid var(--border);
+    border-radius:9px;
+    background:var(--panel);
+    color:var(--text);
+    cursor:pointer;
+    text-align:left;
 }
 
 .option:hover,
 .goal:hover{
-  border-color:#7a4420;
+    border-color:#70401f;
 }
 
 .option.selected{
-  border-color:var(--orange);
-  background:rgba(255,122,26,.08);
+    border-color:var(--orange);
+    background:rgba(255,122,26,.08);
 }
 
 .option small{
-  display:block;
-  color:var(--dim);
-  margin-top:4px;
+    display:block;
+    color:var(--dim);
+    margin-top:5px;
 }
 
 .goal{
-  display:flex;
-  gap:9px;
-  cursor:pointer;
+    display:flex;
+    gap:9px;
+    align-items:flex-start;
 }
 
 .goal input{
-  accent-color:var(--orange);
+    accent-color:var(--orange);
+    margin-top:3px;
 }
 
-/* FORMULÁRIOS */
+/* FORM */
 
 .form{
-  margin-top:12px;
+    margin-top:12px;
 }
 
 .form label{
-  display:block;
-  color:var(--dim);
-  font-size:14px;
-  margin:12px 0 7px;
+    display:block;
+    color:var(--dim);
+    font-size:14px;
+    margin:12px 0 7px;
 }
 
 .form input,
 .form select,
 .form textarea{
-  width:100%;
-  padding:13px;
-  border:1px solid var(--border);
-  border-radius:8px;
-  background:var(--panel);
-  color:var(--text);
-  outline:0;
+    width:100%;
+    padding:13px;
+    border:1px solid var(--border);
+    border-radius:8px;
+    background:var(--panel);
+    color:var(--text);
+    outline:none;
+}
+
+.form input:focus,
+.form select:focus,
+.form textarea:focus{
+    border-color:var(--orange);
 }
 
 .form textarea{
-  min-height:110px;
+    min-height:110px;
 }
 
 .other{
-  display:none;
+    display:none;
 }
 
 .other.show{
-  display:block;
+    display:block;
 }
 
 /* AÇÕES */
 
 .actions{
-  display:flex;
-  justify-content:flex-end;
-  gap:10px;
-  margin-top:25px;
+    display:flex;
+    justify-content:flex-end;
+    gap:10px;
+    margin-top:25px;
 }
 
 .back,
 .continue{
-  padding:12px 20px;
-  border-radius:8px;
-  cursor:pointer;
+    padding:12px 20px;
+    border-radius:8px;
+    cursor:pointer;
 }
 
 .back{
-  background:transparent;
-  color:var(--dim);
-  border:1px solid var(--border);
+    background:transparent;
+    color:var(--dim);
+    border:1px solid var(--border);
 }
 
 .continue{
-  background:var(--orange);
-  border:1px solid var(--orange);
-  color:#1a0e05;
-  font-weight:700;
+    background:var(--orange);
+    border:1px solid var(--orange);
+    color:#1a0e05;
+    font-weight:700;
 }
 
 .continue:disabled{
-  opacity:.4;
-  cursor:not-allowed;
+    opacity:.4;
+    cursor:not-allowed;
 }
 
 /* MOBILE */
 
 @media(max-width:750px){
 
-  .sidebar{
-    width:72px;
-    padding:15px 8px;
-  }
+    .sidebar{
+        width:72px;
+        padding:15px 8px;
+    }
 
-  .nav{
-    padding:12px 5px;
-    text-align:center;
-  }
+    .nav{
+        padding:12px 5px;
+        text-align:center;
+    }
 
-  .label{
-    display:none;
-  }
+    .label{
+        display:none;
+    }
 
-  .topbar{
-    padding:10px 15px;
-  }
+    .topbar{
+        padding:0 14px;
+    }
 
-  .topbar-right .pill{
-    padding:7px 9px;
-    font-size:12px;
-  }
+    .top-actions .pill{
+        padding:7px 9px;
+        font-size:12px;
+    }
 
-  .main{
-    padding:35px 18px;
-  }
+    .main{
+        padding:35px 18px;
+    }
 
-  .options,
-  .goals{
-    grid-template-columns:1fr;
-  }
+    .options,
+    .goals{
+        grid-template-columns:1fr;
+    }
 
-  .card{
-    padding:22px;
-  }
+    .card{
+        padding:22px;
+    }
+
+    .hero-logo{
+        width:125px;
+        height:125px;
+    }
+
+    h1{
+        font-size:28px;
+    }
 }
+
 </style>
+
 </head>
+
 
 <body>
 
+
 <header class="topbar">
 
-  <div class="logo">
-    <img id="topLogo" src="vetrix-logo-final.png" alt="Vetrix AI">
-    <span>VETRIX <span class="ai">AI</span></span>
-  </div>
+    <div class="logo">
 
-  <div class="topbar-right">
-    <button class="pill">👤 Luís</button>
-    <button class="pill" onclick="location.href='index.html'">
-      🏠 INÍCIO
-    </button>
-  </div>
+        <img src="vetrix-logo-final.png" alt="Vetrix AI">
+
+        <span>
+            VETRIX <span class="ai">AI</span>
+        </span>
+
+    </div>
+
+
+    <div class="top-actions">
+
+        <button class="pill">
+            👤 Luís⌄
+        </button>
+
+        <button class="pill" onclick="location.href='index.html'">
+            🏠 INÍCIO
+        </button>
+
+    </div>
 
 </header>
 
 
 <div class="layout">
 
-  <aside class="sidebar">
 
-    <button class="nav active" onclick="location.href='chat.html'">
-      🏠 <span class="label">Início</span>
+<aside class="sidebar">
+
+    <button class="nav active" onclick="novaConversa()">
+        🏠 <span class="label">Início</span>
     </button>
 
     <button class="nav" onclick="novaConversa()">
-      💬 <span class="label">Nova conversa</span>
+        💬 <span class="label">Nova conversa</span>
     </button>
 
     <button class="nav" onclick="mostrarHistorico()">
-      📖 <span class="label">Histórico</span>
+        📖 <span class="label">Histórico</span>
     </button>
 
     <button class="nav" onclick="configuracoes()">
-      ⚙️ <span class="label">Configurações</span>
+        ⚙️ <span class="label">Configurações</span>
     </button>
 
     <button class="nav" onclick="ajuda()">
-      ❓ <span class="label">Ajuda</span>
+        ❓ <span class="label">Ajuda</span>
     </button>
 
-    <!-- O BOTÃO DE MODO FICA SOMENTE NO CHAT -->
-    <div class="modeBtn">
 
-      <button
-        class="nav"
-        id="modeButton"
-        onclick="trocarModo()"
-      >
-        📚 <span class="label">Modo Estudo</span>
-      </button>
+    <div class="mode-area">
+
+        <button class="nav" id="modeButton" onclick="trocarModo()">
+            📚 <span class="label">Modo Estudo</span>
+        </button>
 
     </div>
 
-  </aside>
+</aside>
 
 
-  <main class="main">
+<main class="main">
+
 
     <img
-      class="hero"
-      id="heroLogo"
-      src="vetrix-logo-final.png"
-      alt="Vetrix AI"
+        class="hero-logo"
+        id="heroLogo"
+        src="vetrix-logo-final.png"
+        alt="Vetrix AI"
     >
+
 
     <h1>
-      Olá, <span class="ai">Luís!</span>
+        Olá, <span class="ai">Luís!</span>
     </h1>
 
-    <p>
-      Você está no
-      <span class="mode" id="modeText">modo base</span>.
-    </p>
 
-    <p
-      class="desc"
-      id="description"
-    >
-      Pode fazer perguntas, tirar dúvidas, pedir ideias,
-      conversar e muito mais. Estou aqui para te ajudar.
+    <p class="mode-text">
+        Você está no
+        <span class="mode" id="modeText">modo base</span>.
     </p>
 
 
-    <div class="quick" id="quickButtons">
+    <p class="description" id="description">
+        Pode fazer perguntas, tirar dúvidas, pedir ideias,
+        conversar e muito mais. Estou aqui para te ajudar.
+    </p>
 
-      <button onclick="preencher('Explique este assunto para mim de forma simples.')">
-        Explicar
-      </button>
 
-      <button onclick="preencher('Me ajude a criar uma ideia de projeto.')">
-        Criar uma ideia
-      </button>
+    <div class="quick">
 
-      <button onclick="preencher('Pesquise e me explique este assunto.')">
-        Pesquisar
-      </button>
+        <button onclick="preencher('Explique este assunto para mim de forma simples.')">
+            Explicar
+        </button>
 
-      <button onclick="preencher('Me ajude com tecnologia e programação.')">
-        Tecnologia
-      </button>
+        <button onclick="preencher('Me ajude a criar uma ideia de projeto.')">
+            Criar uma ideia
+        </button>
+
+        <button onclick="preencher('Pesquise e me explique este assunto.')">
+            Pesquisar
+        </button>
+
+        <button onclick="preencher('Me ajude com tecnologia e programação.')">
+            Tecnologia
+        </button>
 
     </div>
 
 
-    <div class="input">
+    <div class="input-box">
 
-      <textarea
-        id="question"
-        placeholder="Digite sua pergunta para o Vetrix..."
-        onkeydown="teclaEnter(event)"
-      ></textarea>
+        <textarea
+            id="question"
+            placeholder="Digite sua pergunta para o Vetrix..."
+        ></textarea>
 
-      <button
-        class="send"
-        onclick="enviar()"
-      >
-        ➤
-      </button>
+        <button class="send" onclick="enviar()">
+            ➤
+        </button>
 
     </div>
 
 
-    <div
-      class="response"
-      id="response"
-    ></div>
+    <div class="response" id="response"></div>
 
-  </main>
+
+</main>
 
 </div>
 
 
 <!-- ONBOARDING -->
 
-<div
-  class="overlay"
-  id="overlay"
->
+<div class="overlay" id="overlay">
 
-  <div class="card">
+<div class="card">
 
     <div class="progress">
-      <div
-        class="bar"
-        id="bar"
-      ></div>
+        <div class="bar" id="bar"></div>
     </div>
+
 
     <div id="content"></div>
 
+
     <div class="actions">
 
-      <button
-        class="back"
-        id="back"
-        onclick="voltar()"
-      >
-        Voltar
-      </button>
+        <button
+            class="back"
+            id="back"
+            onclick="voltar()"
+        >
+            Voltar
+        </button>
 
-      <button
-        class="continue"
-        id="continue"
-        onclick="continuar()"
-        disabled
-      >
-        Continuar →
-      </button>
+        <button
+            class="continue"
+            id="continue"
+            onclick="continuar()"
+        >
+            Continuar →
+        </button>
 
     </div>
 
-  </div>
+</div>
 
 </div>
 
@@ -629,19 +664,21 @@ h2{
 const KEY = "vetrixPerfil";
 
 let perfil = JSON.parse(
-  localStorage.getItem(KEY) || "null"
+    localStorage.getItem(KEY) || "null"
 );
 
+
 let dados = {
-  modo:null,
-  nivel:null,
-  serie:"",
-  curso:"",
-  periodo:"",
-  objetivos:[],
-  outroObjetivo:"",
-  primeiroAcessoConcluido:false
+    modo:null,
+    nivel:null,
+    serie:"",
+    curso:"",
+    periodo:"",
+    objetivos:[],
+    outroObjetivo:"",
+    primeiroAcessoConcluido:false
 };
+
 
 let etapa = 1;
 
@@ -651,7 +688,7 @@ let etapa = 1;
 ========================= */
 
 const params = new URLSearchParams(
-  location.search
+    window.location.search
 );
 
 const entradaModo = params.get("modo");
@@ -663,43 +700,19 @@ const entradaNivel = params.get("nivel");
 ========================= */
 
 const overlay =
-  document.getElementById("overlay");
+    document.getElementById("overlay");
 
 const content =
-  document.getElementById("content");
+    document.getElementById("content");
 
 const cont =
-  document.getElementById("continue");
+    document.getElementById("continue");
 
 const back =
-  document.getElementById("back");
+    document.getElementById("back");
 
 const bar =
-  document.getElementById("bar");
-
-const modeText =
-  document.getElementById("modeText");
-
-const description =
-  document.getElementById("description");
-
-const modeButton =
-  document.getElementById("modeButton");
-
-const heroLogo =
-  document.getElementById("heroLogo");
-
-const topLogo =
-  document.getElementById("topLogo");
-
-const quickButtons =
-  document.getElementById("quickButtons");
-
-const question =
-  document.getElementById("question");
-
-const response =
-  document.getElementById("response");
+    document.getElementById("bar");
 
 
 /* =========================
@@ -708,52 +721,18 @@ const response =
 
 function esc(text){
 
-  return String(text || "")
-    .replace(/[&<>"']/g, function(m){
+    return String(text || "")
+        .replace(/[&<>"']/g, function(m){
 
-      return {
-        "&":"&amp;",
-        "<":"&lt;",
-        ">":"&gt;",
-        '"':"&quot;",
-        "'":"&#039;"
+            return {
+                "&":"&amp;",
+                "<":"&lt;",
+                ">":"&gt;",
+                '"':"&quot;",
+                "'":"&#039;"
+            }[m];
 
-      }[m];
-
-    });
-
-}
-
-
-/* =========================
-   LOGO
-========================= */
-
-function atualizarLogo(){
-
-  /*
-    Se você colocar no GitHub:
-
-    vetrix-logo-estudo.png
-
-    o Vetrix usará essa logo no
-    Modo Estudo.
-
-    Se ela não existir, usamos
-    a logo normal.
-  */
-
-  const estudo =
-    perfil &&
-    perfil.modo === "estudo";
-
-  const logo =
-    estudo
-      ? "vetrix-logo-estudo.png"
-      : "vetrix-logo-final.png";
-
-  heroLogo.src = logo;
-  topLogo.src = logo;
+        });
 
 }
 
@@ -764,49 +743,22 @@ function atualizarLogo(){
 
 function iniciarOnboarding(){
 
-  dados = {
+    dados = {
+        modo:entradaModo || null,
+        nivel:entradaNivel || null,
+        serie:"",
+        curso:"",
+        periodo:"",
+        objetivos:[],
+        outroObjetivo:"",
+        primeiroAcessoConcluido:false
+    };
 
-    modo: entradaModo || null,
+    etapa = 1;
 
-    nivel: entradaNivel || null,
+    render();
 
-    serie:
-      perfil?.serie || "",
-
-    curso:
-      perfil?.curso || "",
-
-    periodo:
-      perfil?.periodo || "",
-
-    objetivos:
-      perfil?.objetivos || [],
-
-    outroObjetivo:
-      perfil?.outroObjetivo || "",
-
-    primeiroAcessoConcluido:false
-
-  };
-
-  /*
-    Se veio do botão
-    "Não sou estudante"
-  */
-
-  if(
-    entradaModo === "base"
-  ){
-
-    dados.modo = "base";
-  }
-
-  etapa = 1;
-
-  render();
-
-  overlay.classList.add("show");
-
+    overlay.classList.add("show");
 }
 
 
@@ -816,172 +768,121 @@ function iniciarOnboarding(){
 
 function render(){
 
-  back.style.display =
-    etapa === 1
-      ? "none"
-      : "block";
+    back.style.display =
+        etapa === 1 ? "none" : "block";
 
-  bar.style.width =
-    etapa === 1
-      ? "50%"
-      : "100%";
+    bar.style.width =
+        etapa === 1 ? "50%" : "100%";
 
 
-  /* PRIMEIRA ETAPA */
+    if(etapa === 1){
 
-  if(etapa === 1){
+        /*
+        Se veio da página inicial
+        como modo base, vai direto
+        para os objetivos.
+        */
 
-    /*
-      Se veio diretamente
-      para modo base
-    */
+        if(dados.modo === "base"){
 
-    if(dados.modo === "base"){
+            renderObjetivos();
 
-      renderObjetivos();
+            return;
+        }
 
-      return;
 
+        content.innerHTML = `
+
+            <h2>
+                Como você pretende usar o Vetrix?
+            </h2>
+
+            <p class="sub">
+                Escolha seu nível de estudo para que
+                o Vetrix possa adaptar melhor as respostas.
+            </p>
+
+            <div class="options">
+
+                <button
+                    class="option ${dados.nivel==="fundamental" ? "selected" : ""}"
+                    onclick="selecionarNivel('fundamental',this)"
+                >
+                    <b>📘 Fundamental II</b>
+                    <small>6º, 7º, 8º ou 9º ano</small>
+                </button>
+
+
+                <button
+                    class="option ${dados.nivel==="medio" ? "selected" : ""}"
+                    onclick="selecionarNivel('medio',this)"
+                >
+                    <b>🎓 Ensino Médio</b>
+                    <small>1º, 2º ou 3º ano</small>
+                </button>
+
+
+                <button
+                    class="option ${dados.nivel==="faculdade" ? "selected" : ""}"
+                    onclick="selecionarNivel('faculdade',this)"
+                >
+                    <b>🏫 Faculdade</b>
+                    <small>Curso e período</small>
+                </button>
+
+
+                <button
+                    class="option ${dados.modo==="base" ? "selected" : ""}"
+                    onclick="selecionarBase(this)"
+                >
+                    <b>🌎 Não sou estudante</b>
+                    <small>Usar o Vetrix no modo base</small>
+                </button>
+
+            </div>
+        `;
+
+
+        cont.disabled =
+            !dados.nivel &&
+            dados.modo !== "base";
+
+        return;
     }
 
 
-    content.innerHTML = `
+    if(dados.modo === "base"){
 
-      <h2>
-        Como você pretende usar o Vetrix?
-      </h2>
+        renderObjetivos();
 
-      <p class="sub">
-        Escolha seu nível de estudo para que
-        o Vetrix possa adaptar melhor as respostas.
-      </p>
+    }else{
 
-      <div class="options">
+        renderEstudante();
 
-        <button
-          class="option ${
-            dados.nivel === "fundamental"
-              ? "selected"
-              : ""
-          }"
-          onclick="selecionarNivel('fundamental',this)"
-        >
-
-          <b>📘 Fundamental II</b>
-
-          <small>
-            6º, 7º, 8º ou 9º ano
-          </small>
-
-        </button>
-
-
-        <button
-          class="option ${
-            dados.nivel === "medio"
-              ? "selected"
-              : ""
-          }"
-          onclick="selecionarNivel('medio',this)"
-        >
-
-          <b>🎓 Ensino Médio</b>
-
-          <small>
-            1º, 2º ou 3º ano
-          </small>
-
-        </button>
-
-
-        <button
-          class="option ${
-            dados.nivel === "faculdade"
-              ? "selected"
-              : ""
-          }"
-          onclick="selecionarNivel('faculdade',this)"
-        >
-
-          <b>🏫 Faculdade</b>
-
-          <small>
-            Curso e período
-          </small>
-
-        </button>
-
-
-        <button
-          class="option ${
-            dados.modo === "base"
-              ? "selected"
-              : ""
-          }"
-          onclick="selecionarBase(this)"
-        >
-
-          <b>🌎 Não sou estudante</b>
-
-          <small>
-            Usar o Vetrix no modo base
-          </small>
-
-        </button>
-
-      </div>
-
-    `;
-
-    cont.disabled =
-      !dados.nivel &&
-      dados.modo !== "base";
-
-    return;
-
-  }
-
-
-  /*
-    SEGUNDA ETAPA
-  */
-
-  if(dados.modo === "base"){
-
-    renderObjetivos();
-
-  }else{
-
-    renderEstudante();
-
-  }
+    }
 
 }
 
 
 /* =========================
-   SELECIONAR NÍVEL
+   NÍVEL
 ========================= */
 
-function selecionarNivel(
-  nivel,
-  elemento
-){
+function selecionarNivel(nivel, elemento){
 
-  dados.modo = "estudo";
+    dados.modo = "estudo";
 
-  dados.nivel = nivel;
+    dados.nivel = nivel;
 
-  document
-    .querySelectorAll(".option")
-    .forEach(
-      x => x.classList.remove("selected")
-    );
+    document
+        .querySelectorAll(".option")
+        .forEach(function(x){
+            x.classList.remove("selected");
+        });
 
-  elemento.classList.add("selected");
+    elemento.classList.add("selected");
 
-  cont.disabled = false;
-
+    cont.disabled = false;
 }
 
 
@@ -991,20 +892,19 @@ function selecionarNivel(
 
 function selecionarBase(elemento){
 
-  dados.modo = "base";
+    dados.modo = "base";
 
-  dados.nivel = null;
+    dados.nivel = null;
 
-  document
-    .querySelectorAll(".option")
-    .forEach(
-      x => x.classList.remove("selected")
-    );
+    document
+        .querySelectorAll(".option")
+        .forEach(function(x){
+            x.classList.remove("selected");
+        });
 
-  elemento.classList.add("selected");
+    elemento.classList.add("selected");
 
-  cont.disabled = false;
-
+    cont.disabled = false;
 }
 
 
@@ -1014,332 +914,255 @@ function selecionarBase(elemento){
 
 function renderEstudante(){
 
-  if(
-    dados.nivel === "fundamental" ||
-    dados.nivel === "medio"
-  ){
+    if(
+        dados.nivel === "fundamental" ||
+        dados.nivel === "medio"
+    ){
 
-    const titulo =
-      dados.nivel === "fundamental"
-        ? "Qual é o seu ano escolar?"
-        : "Qual é o seu ano do Ensino Médio?";
-
-
-    const opcoes =
-      dados.nivel === "fundamental"
-
-        ? [
-            "6º ano",
-            "7º ano",
-            "8º ano",
-            "9º ano"
-          ]
-
-        : [
-            "1º ano",
-            "2º ano",
-            "3º ano"
-          ];
+        const titulo =
+            dados.nivel === "fundamental"
+            ? "Qual é o seu ano escolar?"
+            : "Qual é o seu ano do Ensino Médio?";
 
 
-    content.innerHTML = `
-
-      <h2>
-        ${titulo}
-      </h2>
-
-      <p class="sub">
-        Assim o Vetrix consegue adaptar melhor
-        o nível das explicações.
-      </p>
-
-      <div class="form">
-
-        <label>
-          Ano
-        </label>
-
-        <select id="serie">
-
-          <option value="">
-            Selecione...
-          </option>
-
-          ${opcoes.map(
-            x => `
-              <option value="${x}">
-                ${x}
-              </option>
-            `
-          ).join("")}
-
-        </select>
-
-      </div>
-
-    `;
+        const opcoes =
+            dados.nivel === "fundamental"
+            ? ["6º ano","7º ano","8º ano","9º ano"]
+            : ["1º ano","2º ano","3º ano"];
 
 
-    const serie =
-      document.getElementById("serie");
+        content.innerHTML = `
 
-    serie.value =
-      dados.serie || "";
+            <h2>${titulo}</h2>
 
-    serie.onchange =
-      verificarFormulario;
+            <p class="sub">
+                Assim o Vetrix consegue adaptar melhor
+                o nível das explicações.
+            </p>
 
-    verificarFormulario();
+            <div class="form">
 
-    return;
+                <label>Ano</label>
 
-  }
+                <select id="serie">
 
+                    <option value="">
+                        Selecione...
+                    </option>
 
-  /* FACULDADE */
+                    ${opcoes.map(function(x){
 
-  content.innerHTML = `
+                        return `
+                            <option value="${x}">
+                                ${x}
+                            </option>
+                        `;
 
-    <h2>
-      Conte um pouco sobre sua faculdade
-    </h2>
+                    }).join("")}
 
-    <p class="sub">
-      Informe seu curso e, se quiser,
-      seu semestre ou período.
-    </p>
+                </select>
 
-    <div class="form">
-
-      <label>
-        Curso
-      </label>
-
-      <input
-        id="curso"
-        placeholder="Ex.: Engenharia de Computação"
-        value="${esc(dados.curso)}"
-        oninput="verificarFormulario()"
-      >
+            </div>
+        `;
 
 
-      <label>
-        Semestre/período
-      </label>
+        document.getElementById("serie").value =
+            dados.serie || "";
 
-      <input
-        id="periodo"
-        placeholder="Ex.: 3º semestre"
-        value="${esc(dados.periodo)}"
-      >
+    }else{
 
-    </div>
+        content.innerHTML = `
 
-  `;
+            <h2>
+                Conte um pouco sobre sua faculdade
+            </h2>
 
-  verificarFormulario();
+            <p class="sub">
+                Informe seu curso e, se quiser,
+                seu semestre/período.
+            </p>
+
+            <div class="form">
+
+                <label>Curso</label>
+
+                <input
+                    id="curso"
+                    placeholder="Ex.: Engenharia de Computação"
+                >
+
+
+                <label>
+                    Semestre/período (opcional)
+                </label>
+
+                <input
+                    id="periodo"
+                    placeholder="Ex.: 3º semestre"
+                >
+
+            </div>
+        `;
+
+
+        document.getElementById("curso").value =
+            dados.curso || "";
+
+        document.getElementById("periodo").value =
+            dados.periodo || "";
+
+    }
 
 }
 
 
 /* =========================
-   OBJETIVOS BASE
+   OBJETIVOS
 ========================= */
 
 function renderObjetivos(){
 
-  const objetivos = [
+    const objetivos = [
 
-    "💼 Trabalho e produtividade",
+        "💼 Trabalho e produtividade",
+        "💡 Criar ideias e projetos",
+        "🔎 Pesquisar e aprender sobre assuntos",
+        "💻 Tecnologia e programação",
+        "✍️ Escrever e criar conteúdos",
+        "🎨 Criatividade",
+        "💬 Conversar e tirar dúvidas",
+        "➕ Outros"
 
-    "💡 Criar ideias e projetos",
-
-    "🔎 Pesquisar e aprender sobre assuntos",
-
-    "💻 Tecnologia e programação",
-
-    "✍️ Escrever e criar conteúdos",
-
-    "🎨 Criatividade",
-
-    "💬 Conversar e tirar dúvidas",
-
-    "➕ Outro"
-
-  ];
+    ];
 
 
-  content.innerHTML = `
+    content.innerHTML = `
 
-    <h2>
-      O que você pretende fazer com o Vetrix?
-    </h2>
+        <h2>
+            O que você pretende fazer com o Vetrix?
+        </h2>
 
-    <p class="sub">
-      Você pode escolher uma ou várias opções.
-    </p>
-
-    <div class="goals">
-
-      ${objetivos.map(
-        texto => {
-
-          const valor =
-            texto.replace(/^.+? /,"");
-
-          const checked =
-            dados.objetivos.includes(valor)
-              ? "checked"
-              : "";
-
-          return `
-
-            <label class="goal">
-
-              <input
-                type="checkbox"
-                value="${esc(valor)}"
-                ${checked}
-                onchange="objetivosMudaram()"
-              >
-
-              <span>
-                ${texto}
-              </span>
-
-            </label>
-
-          `;
-
-        }
-      ).join("")}
-
-    </div>
+        <p class="sub">
+            Você pode escolher uma ou várias opções.
+        </p>
 
 
-    <div
-      class="other ${
-        dados.objetivos.includes("Outro")
-          ? "show"
-          : ""
-      }"
-      id="other"
-    >
+        <div class="goals">
 
-      <div class="form">
+            ${objetivos.map(function(texto){
 
-        <label>
-          Conte para o Vetrix o que você pretende fazer:
-        </label>
+                const valor =
+                    texto.replace(/^.+? /,"");
 
-        <textarea
-          id="otherText"
-          placeholder="Ex.: Quero usar o Vetrix para organizar meus projetos."
-          oninput="objetivosMudaram()"
-        >${esc(dados.outroObjetivo)}</textarea>
+                return `
 
-      </div>
+                    <label class="goal">
 
-    </div>
+                        <input
+                            type="checkbox"
+                            value="${esc(valor)}"
+                            ${
+                                dados.objetivos.includes(valor)
+                                ? "checked"
+                                : ""
+                            }
+                            onchange="atualizarObjetivos()"
+                        >
 
-  `;
+                        <span>${texto}</span>
+
+                    </label>
+                `;
+
+            }).join("")}
+
+        </div>
 
 
-  objetivosMudaram();
+        <div
+            class="other ${
+                dados.objetivos.includes("Outros")
+                ? "show"
+                : ""
+            }"
+            id="other"
+        >
+
+            <div class="form">
+
+                <label>
+                    Conte para o Vetrix o que você pretende fazer:
+                </label>
+
+                <textarea
+                    id="otherText"
+                    placeholder="Ex.: Quero usar o Vetrix para organizar meus projetos."
+                >${esc(dados.outroObjetivo)}</textarea>
+
+            </div>
+
+        </div>
+
+    `;
+
+
+    atualizarObjetivos();
 
 }
 
 
 /* =========================
-   OBJETIVOS MUDARAM
+   ATUALIZAR OBJETIVOS
 ========================= */
 
-function objetivosMudaram(){
+function atualizarObjetivos(){
 
-  dados.objetivos =
-    [
-      ...document.querySelectorAll(
-        ".goal input:checked"
-      )
-    ].map(
-      x => x.value
-    );
+    dados.objetivos =
+        Array.from(
+            document.querySelectorAll(
+                ".goal input:checked"
+            )
+        ).map(function(input){
 
+            return input.value;
 
-  const other =
-    document.getElementById("other");
-
-  if(other){
-
-    other.classList.toggle(
-      "show",
-      dados.objetivos.includes("Outro")
-    );
-
-  }
+        });
 
 
-  const otherText =
-    document.getElementById("otherText");
-
-  if(otherText){
-
-    dados.outroObjetivo =
-      otherText.value;
-
-  }
+    const other =
+        document.getElementById("other");
 
 
-  cont.disabled =
-    !dados.objetivos.length ||
+    if(other){
 
-    (
-      dados.objetivos.includes("Outro") &&
-      !dados.outroObjetivo.trim()
-    );
+        other.classList.toggle(
+            "show",
+            dados.objetivos.includes("Outros")
+        );
 
-}
-
-
-/* =========================
-   FORMULÁRIO
-========================= */
-
-function verificarFormulario(){
-
-  if(
-    dados.modo === "base"
-  ){
-
-    objetivosMudaram();
-
-    return;
-
-  }
+    }
 
 
-  if(
-    dados.nivel === "faculdade"
-  ){
+    const text =
+        document.getElementById("otherText");
 
-    const curso =
-      document.getElementById("curso");
+
+    if(text){
+
+        dados.outroObjetivo = text.value;
+
+        text.oninput =
+            atualizarObjetivos;
+
+    }
+
 
     cont.disabled =
-      !curso ||
-      !curso.value.trim();
-
-    return;
-
-  }
-
-
-  const serie =
-    document.getElementById("serie");
-
-  cont.disabled =
-    !serie ||
-    !serie.value;
+        dados.objetivos.length === 0 ||
+        (
+            dados.objetivos.includes("Outros") &&
+            !dados.outroObjetivo.trim()
+        );
 
 }
 
@@ -1350,109 +1173,103 @@ function verificarFormulario(){
 
 function continuar(){
 
-  /* PRIMEIRA ETAPA */
+    if(etapa === 1){
 
-  if(etapa === 1){
+        if(dados.modo === "base"){
 
-    if(!dados.modo){
+            etapa = 2;
 
-      return;
+            render();
 
-    }
-
-    etapa = 2;
-
-    render();
-
-    return;
-
-  }
+            return;
+        }
 
 
-  /* ESTUDO */
+        if(!dados.nivel){
 
-  if(dados.modo === "estudo"){
-
-    if(
-      dados.nivel === "faculdade"
-    ){
-
-      const curso =
-        document.getElementById("curso");
-
-      const periodo =
-        document.getElementById("periodo");
-
-      dados.curso =
-        curso.value.trim();
-
-      dados.periodo =
-        periodo.value.trim();
+            return;
+        }
 
 
-      if(!dados.curso){
+        etapa = 2;
 
-        alert(
-          "Digite pelo menos o seu curso."
-        );
+        render();
 
         return;
 
-      }
+    }
+
+
+    if(dados.modo === "estudo"){
+
+        if(dados.nivel === "faculdade"){
+
+            dados.curso =
+                document.getElementById("curso")
+                .value
+                .trim();
+
+            dados.periodo =
+                document.getElementById("periodo")
+                .value
+                .trim();
+
+
+            if(!dados.curso){
+
+                alert(
+                    "Digite pelo menos o seu curso."
+                );
+
+                return;
+            }
+
+        }else{
+
+            dados.serie =
+                document.getElementById("serie")
+                .value;
+
+
+            if(!dados.serie){
+
+                alert(
+                    "Escolha o seu ano escolar."
+                );
+
+                return;
+            }
+
+        }
 
     }else{
 
-      const serie =
-        document.getElementById("serie");
+        atualizarObjetivos();
 
-      dados.serie =
-        serie.value;
+        if(cont.disabled){
 
-
-      if(!dados.serie){
-
-        alert(
-          "Escolha o seu ano escolar."
-        );
-
-        return;
-
-      }
+            return;
+        }
 
     }
 
-  }
+
+    dados.primeiroAcessoConcluido = true;
 
 
-  /* BASE */
-
-  else{
-
-    objetivosMudaram();
-
-    if(cont.disabled){
-
-      return;
-
-    }
-
-  }
+    localStorage.setItem(
+        KEY,
+        JSON.stringify(dados)
+    );
 
 
-  /* SALVAR */
+    perfil = dados;
 
-  dados.primeiroAcessoConcluido = true;
 
-  localStorage.setItem(
-    KEY,
-    JSON.stringify(dados)
-  );
+    overlay.classList.remove("show");
 
-  perfil = dados;
 
-  overlay.classList.remove("show");
-
-  aplicarPerfil();
+    aplicarPerfil();
 
 }
 
@@ -1463,9 +1280,9 @@ function continuar(){
 
 function voltar(){
 
-  etapa = 1;
+    etapa = 1;
 
-  render();
+    render();
 
 }
 
@@ -1476,114 +1293,54 @@ function voltar(){
 
 function aplicarPerfil(){
 
-  if(!perfil){
+    if(!perfil){
 
-    return;
-
-  }
-
-
-  modeText.textContent =
-    perfil.modo === "estudo"
-      ? "modo estudo"
-      : "modo base";
-
-
-  if(
-    perfil.modo === "estudo"
-  ){
-
-    let detalhe = "";
-
-    if(
-      perfil.nivel === "faculdade"
-    ){
-
-      detalhe =
-        perfil.curso
-          ? " — " + perfil.curso
-          : "";
-
-    }else{
-
-      detalhe =
-        perfil.serie
-          ? " — " + perfil.serie
-          : "";
-
+        return;
     }
 
 
-    description.textContent =
-      "O Vetrix está adaptado para seus estudos" +
-      detalhe +
-      ". Faça perguntas, peça explicações, resumos, exercícios e muito mais.";
+    document.getElementById("modeText")
+        .textContent =
+        perfil.modo === "estudo"
+        ? "modo estudo"
+        : "modo base";
 
 
-    modeButton.innerHTML =
-      '🏠 <span class="label">Modo Base</span>';
+    const description =
+        document.getElementById("description");
 
 
-    quickButtons.innerHTML = `
-
-      <button onclick="preencher('Explique este assunto de forma simples e passo a passo.')">
-        📚 Explicar
-      </button>
-
-      <button onclick="preencher('Faça um resumo deste assunto para eu estudar.')">
-        📝 Resumo
-      </button>
-
-      <button onclick="preencher('Crie exercícios sobre este assunto para eu praticar.')">
-        ✏️ Exercícios
-      </button>
-
-      <button onclick="preencher('Me ajude a estudar este assunto.')">
-        🧠 Estudar
-      </button>
-
-    `;
-
-    question.placeholder =
-      "Pergunte algo para estudar...";
-
-  }else{
-
-    description.textContent =
-      "Pode fazer perguntas, tirar dúvidas, pedir ideias, conversar e muito mais. Estou aqui para te ajudar.";
+    const modeButton =
+        document.getElementById("modeButton");
 
 
-    modeButton.innerHTML =
-      '📚 <span class="label">Modo Estudo</span>';
+    if(perfil.modo === "estudo"){
+
+        let detalhe =
+            perfil.nivel === "faculdade"
+            ? perfil.curso
+            : perfil.serie;
 
 
-    quickButtons.innerHTML = `
-
-      <button onclick="preencher('Explique este assunto para mim de forma simples.')">
-        Explicar
-      </button>
-
-      <button onclick="preencher('Me ajude a criar uma ideia de projeto.')">
-        Criar uma ideia
-      </button>
-
-      <button onclick="preencher('Pesquise e me explique este assunto.')">
-        Pesquisar
-      </button>
-
-      <button onclick="preencher('Me ajude com tecnologia e programação.')">
-        Tecnologia
-      </button>
-
-    `;
-
-    question.placeholder =
-      "Digite sua pergunta para o Vetrix...";
-
-  }
+        description.textContent =
+            "O Vetrix está adaptado para seus estudos" +
+            (detalhe ? " — " + detalhe : "") +
+            ". Faça perguntas, peça explicações, resumos, exercícios e muito mais.";
 
 
-  atualizarLogo();
+        modeButton.innerHTML =
+            '🏠 <span class="label">Modo Base</span>';
+
+    }else{
+
+        description.textContent =
+            "Pode fazer perguntas, tirar dúvidas, pedir ideias, conversar e muito mais. Estou aqui para te ajudar.";
+
+
+        modeButton.innerHTML =
+            '📚 <span class="label">Modo Estudo</span>';
+
+    }
 
 }
 
@@ -1594,88 +1351,59 @@ function aplicarPerfil(){
 
 function trocarModo(){
 
-  if(!perfil){
+    if(!perfil){
+
+        iniciarOnboarding();
+
+        return;
+    }
+
+
+    if(perfil.modo === "estudo"){
+
+        perfil.modo = "base";
+
+        localStorage.setItem(
+            KEY,
+            JSON.stringify(perfil)
+        );
+
+        aplicarPerfil();
+
+        return;
+    }
+
+
+    if(perfil.nivel){
+
+        perfil.modo = "estudo";
+
+        localStorage.setItem(
+            KEY,
+            JSON.stringify(perfil)
+        );
+
+        aplicarPerfil();
+
+        return;
+    }
+
+
+    dados = {
+        modo:"estudo",
+        nivel:null,
+        serie:"",
+        curso:"",
+        periodo:"",
+        objetivos:[],
+        outroObjetivo:"",
+        primeiroAcessoConcluido:false
+    };
+
+
+    entradaModo = null;
 
     iniciarOnboarding();
-
-    return;
-
-  }
-
-
-  if(
-    perfil.modo === "estudo"
-  ){
-
-    perfil.modo = "base";
-
-    localStorage.setItem(
-      KEY,
-      JSON.stringify(perfil)
-    );
-
-    aplicarPerfil();
-
-    return;
-
-  }
-
-
-  /*
-    Se já existe um nível salvo,
-    entra direto no estudo.
-  */
-
-  if(
-    perfil.nivel
-  ){
-
-    perfil.modo = "estudo";
-
-    localStorage.setItem(
-      KEY,
-      JSON.stringify(perfil)
-    );
-
-    aplicarPerfil();
-
-    return;
-
-  }
-
-
-  /*
-    Usuário base que nunca
-    escolheu nível de estudo.
-  */
-
-  dados = {
-
-    modo:"estudo",
-
-    nivel:null,
-
-    serie:"",
-
-    curso:"",
-
-    periodo:"",
-
-    objetivos:
-      perfil.objetivos || [],
-
-    outroObjetivo:
-      perfil.outroObjetivo || "",
-
-    primeiroAcessoConcluido:false
-
-  };
-
-  etapa = 1;
-
-  render();
-
-  overlay.classList.add("show");
 
 }
 
@@ -1686,10 +1414,12 @@ function trocarModo(){
 
 function preencher(texto){
 
-  question.value =
-    texto;
+    const question =
+        document.getElementById("question");
 
-  question.focus();
+    question.value = texto;
+
+    question.focus();
 
 }
 
@@ -1700,97 +1430,48 @@ function preencher(texto){
 
 function enviar(){
 
-  const texto =
-    question.value.trim();
+    const question =
+        document.getElementById("question");
 
-  if(!texto){
-
-    return;
-
-  }
+    const response =
+        document.getElementById("response");
 
 
-  response.style.display =
-    "block";
+    const texto =
+        question.value.trim();
 
 
-  if(
-    perfil &&
-    perfil.modo === "estudo"
-  ){
+    if(!texto){
+
+        return;
+    }
+
+
+    response.style.display = "block";
+
 
     response.innerHTML = `
 
-      <b style="color:var(--orange)">
-        Vetrix — Modo Estudo
-      </b>
+        <b style="color:var(--orange)">
+            Vetrix:
+        </b>
 
-      <br><br>
+        <br><br>
 
-      Recebi sua pergunta:
+        Recebi sua pergunta:
+        “${esc(texto)}”
 
-      <br><br>
+        <br><br>
 
-      “${esc(texto)}”
-
-      <br><br>
-
-      <span style="color:var(--dim)">
-        O sistema de IA ainda precisa da API
-        para gerar a resposta real.
-      </span>
+        <span style="color:var(--dim)">
+            A API será conectada na próxima etapa
+            para gerar respostas reais.
+        </span>
 
     `;
 
-  }else{
 
-    response.innerHTML = `
-
-      <b style="color:var(--orange)">
-        Vetrix — Modo Base
-      </b>
-
-      <br><br>
-
-      Recebi sua pergunta:
-
-      <br><br>
-
-      “${esc(texto)}”
-
-      <br><br>
-
-      <span style="color:var(--dim)">
-        O sistema de IA ainda precisa da API
-        para gerar a resposta real.
-      </span>
-
-    `;
-
-  }
-
-
-  question.value = "";
-
-}
-
-
-/* =========================
-   ENTER
-========================= */
-
-function teclaEnter(event){
-
-  if(
-    event.key === "Enter" &&
-    !event.shiftKey
-  ){
-
-    event.preventDefault();
-
-    enviar();
-
-  }
+    question.value = "";
 
 }
 
@@ -1801,12 +1482,13 @@ function teclaEnter(event){
 
 function novaConversa(){
 
-  question.value = "";
+    document.getElementById("question").value = "";
 
-  response.style.display =
-    "none";
+    document.getElementById("response")
+        .style.display = "none";
 
-  question.focus();
+    document.getElementById("question")
+        .focus();
 
 }
 
@@ -1817,9 +1499,9 @@ function novaConversa(){
 
 function mostrarHistorico(){
 
-  alert(
-    "O histórico de conversas será conectado em uma próxima etapa."
-  );
+    alert(
+        "O histórico será ativado junto com a próxima etapa do Vetrix."
+    );
 
 }
 
@@ -1830,19 +1512,9 @@ function mostrarHistorico(){
 
 function configuracoes(){
 
-  const mudar =
-    confirm(
-      "Deseja apagar suas preferências do Vetrix e refazer a configuração?"
+    alert(
+        "As configurações do Vetrix serão adicionadas em breve."
     );
-
-  if(mudar){
-
-    localStorage.removeItem(KEY);
-
-    location.href =
-      "chat.html";
-
-  }
 
 }
 
@@ -1853,11 +1525,36 @@ function configuracoes(){
 
 function ajuda(){
 
-  alert(
-    "Use o campo de pergunta para conversar com o Vetrix. No Modo Estudo, as respostas serão adaptadas ao seu nível."
-  );
+    alert(
+        "Use o campo de mensagem para conversar com o Vetrix."
+    );
 
 }
+
+
+/* =========================
+   ENTER
+========================= */
+
+document
+    .getElementById("question")
+    .addEventListener(
+        "keydown",
+        function(event){
+
+            if(
+                event.key === "Enter" &&
+                !event.shiftKey
+            ){
+
+                event.preventDefault();
+
+                enviar();
+
+            }
+
+        }
+    );
 
 
 /* =========================
@@ -1865,15 +1562,15 @@ function ajuda(){
 ========================= */
 
 if(
-  perfil &&
-  perfil.primeiroAcessoConcluido
+    perfil &&
+    perfil.primeiroAcessoConcluido
 ){
 
-  aplicarPerfil();
+    aplicarPerfil();
 
 }else{
 
-  iniciarOnboarding();
+    iniciarOnboarding();
 
 }
 
