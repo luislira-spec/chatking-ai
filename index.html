@@ -22,9 +22,11 @@ html{
 
 body{
     font-family:Arial,Helvetica,sans-serif;
-    background:#090807;
-    color:#f4eee8;
+    background:#11100f;
+    color:#f7f2ed;
 }
+
+/* NAVBAR */
 
 nav{
     height:82px;
@@ -32,8 +34,8 @@ nav{
     align-items:center;
     justify-content:space-between;
     padding:0 7%;
-    border-bottom:1px solid #302018;
-    background:#0b0908;
+    background:#171411;
+    border-bottom:1px solid #463326;
 }
 
 .logo-area{
@@ -42,6 +44,7 @@ nav{
     gap:12px;
     font-size:22px;
     font-weight:bold;
+    letter-spacing:1px;
 }
 
 .logo-area img{
@@ -56,7 +59,7 @@ nav{
 }
 
 .links a{
-    color:#b9aaa0;
+    color:#c2b5aa;
     text-decoration:none;
     font-size:15px;
     transition:.2s;
@@ -73,8 +76,8 @@ nav{
 
 .nav-buttons a{
     text-decoration:none;
-    color:#f4eee8;
-    border:1px solid #493022;
+    color:#f7f2ed;
+    border:1px solid #584031;
     padding:10px 18px;
     border-radius:9px;
     font-size:14px;
@@ -82,10 +85,12 @@ nav{
 
 .nav-buttons .enter{
     background:#ff7a1a;
-    color:#160d08;
+    color:#1a1009;
     border-color:#ff7a1a;
     font-weight:bold;
 }
+
+/* HERO */
 
 .hero{
     min-height:650px;
@@ -95,6 +100,8 @@ nav{
     justify-content:center;
     text-align:center;
     padding:70px 20px;
+    background:
+        radial-gradient(circle at center, #292019 0%, #171411 38%, #11100f 75%);
 }
 
 .hero img{
@@ -102,6 +109,7 @@ nav{
     height:190px;
     object-fit:contain;
     margin-bottom:25px;
+    filter:drop-shadow(0 10px 30px rgba(255,122,26,.10));
 }
 
 .hero h1{
@@ -112,7 +120,7 @@ nav{
 
 .hero p{
     max-width:700px;
-    color:#b8aaa0;
+    color:#c2b5aa;
     font-size:18px;
     line-height:1.7;
 }
@@ -122,7 +130,7 @@ nav{
     margin-top:32px;
     padding:15px 30px;
     background:#ff7a1a;
-    color:#160d08;
+    color:#1a1009;
     text-decoration:none;
     border-radius:10px;
     font-weight:bold;
@@ -131,8 +139,10 @@ nav{
 
 .main-button:hover{
     transform:translateY(-2px);
-    box-shadow:0 8px 30px rgba(255,122,26,.18);
+    box-shadow:0 10px 35px rgba(255,122,26,.20);
 }
+
+/* SEÇÕES */
 
 section{
     padding:90px 7%;
@@ -144,24 +154,28 @@ section{
     margin-bottom:45px;
 }
 
+/* CARDS */
+
 .use-grid{
     display:grid;
     grid-template-columns:repeat(4,1fr);
-    gap:18px;
+    gap:20px;
 }
 
 .card{
-    background:#110d0a;
-    border:1px solid #38251a;
+    background:#1d1814;
+    border:1px solid #4a3526;
     border-radius:15px;
     padding:28px;
-    min-height:170px;
+    min-height:175px;
     transition:.25s;
+    box-shadow:0 8px 25px rgba(0,0,0,.12);
 }
 
 .card:hover{
     border-color:#ff7a1a;
     transform:translateY(-4px);
+    background:#211b17;
 }
 
 .card h3{
@@ -170,41 +184,53 @@ section{
 }
 
 .card p{
-    color:#a99b8f;
+    color:#bcaea3;
     line-height:1.6;
     font-size:14px;
 }
 
+/* RECURSOS */
+
 .resources{
-    background:#0d0a08;
+    background:#171411;
+    border-top:1px solid #30241c;
+    border-bottom:1px solid #30241c;
 }
 
 .resource-grid{
     display:grid;
     grid-template-columns:repeat(3,1fr);
-    gap:18px;
+    gap:20px;
 }
+
+/* SOBRE */
 
 .about{
     text-align:center;
+    background:#11100f;
 }
 
 .about p{
     max-width:760px;
     margin:auto;
-    color:#aaa099;
+    color:#bcaea3;
     line-height:1.8;
 }
 
+/* FOOTER */
+
 footer{
-    border-top:1px solid #302018;
+    border-top:1px solid #3a2b21;
     padding:35px 7%;
     text-align:center;
-    color:#8f8178;
-    background:#090807;
+    color:#9d8f84;
+    background:#171411;
 }
 
+/* RESPONSIVO */
+
 @media(max-width:900px){
+
     .links{
         display:none;
     }
@@ -219,6 +245,7 @@ footer{
 }
 
 @media(max-width:550px){
+
     .use-grid{
         grid-template-columns:1fr;
     }
@@ -242,6 +269,7 @@ footer{
 <body>
 
 <nav>
+
     <div class="logo-area">
         <img src="vetrix-logo-final.png" alt="Vetrix AI">
         <span>VETRIX AI</span>
@@ -259,11 +287,13 @@ footer{
         <a href="#sobre">Sobre</a>
         <a href="chat.html" class="enter">Entrar</a>
     </div>
+
 </nav>
 
 <main>
 
 <section class="hero">
+
     <img src="vetrix-logo-final.png" alt="Logo Vetrix AI">
 
     <h1>VETRIX AI</h1>
@@ -276,10 +306,14 @@ footer{
     <a href="chat.html" class="main-button">
         Começar agora
     </a>
+
 </section>
 
 <section>
-    <h2 class="section-title">Como você pretende usar o Vetrix?</h2>
+
+    <h2 class="section-title">
+        Como você pretende usar o Vetrix?
+    </h2>
 
     <div class="use-grid">
 
@@ -316,9 +350,11 @@ footer{
         </div>
 
     </div>
+
 </section>
 
 <section class="resources" id="recursos">
+
     <h2 class="section-title">Recursos</h2>
 
     <div class="resource-grid">
@@ -359,9 +395,11 @@ footer{
         </div>
 
     </div>
+
 </section>
 
 <section class="about" id="sobre">
+
     <h2 class="section-title">Sobre o Vetrix</h2>
 
     <p>
@@ -369,6 +407,7 @@ footer{
         ajudar pessoas a aprender, criar, pesquisar, resolver
         problemas e desenvolver novas ideias.
     </p>
+
 </section>
 
 </main>
