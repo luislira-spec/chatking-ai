@@ -6,9 +6,8 @@
 
 <title>Vetrix AI</title>
 
-<!-- Ícone da aba -->
-<link rel="icon" type="image/png" href="vetrix-logo-final.png">
-<link rel="shortcut icon" type="image/png" href="vetrix-logo-final.png">
+<link rel="icon" type="image/png" href="vetrix-favicon.png">
+<link rel="shortcut icon" type="image/png" href="vetrix-favicon.png">
 
 <style>
 :root{
@@ -21,19 +20,15 @@
     --dim:#a99b8f;
 }
 
-*{
-    box-sizing:border-box;
-}
+*{box-sizing:border-box}
 
-html{
-    scroll-behavior:smooth;
-}
+html{scroll-behavior:smooth}
 
 body{
     margin:0;
     background:var(--bg);
     color:var(--text);
-    font-family:"Segoe UI",system-ui,-apple-system,sans-serif;
+    font-family:"Segoe UI",system-ui,sans-serif;
 }
 
 a{
@@ -41,16 +36,14 @@ a{
     text-decoration:none;
 }
 
-/* NAVBAR */
-
 .navbar{
     height:82px;
+    padding:0 42px;
     display:flex;
     align-items:center;
     justify-content:space-between;
-    padding:0 42px;
     border-bottom:1px solid var(--border);
-    background:rgba(9,8,7,.96);
+    background:#0d0907;
     position:sticky;
     top:0;
     z-index:20;
@@ -62,7 +55,6 @@ a{
     gap:12px;
     font-size:20px;
     font-weight:750;
-    letter-spacing:.3px;
 }
 
 .brand img{
@@ -71,13 +63,12 @@ a{
     object-fit:contain;
 }
 
-.brand span span{
+.brand .ai{
     color:var(--orange);
 }
 
 .links{
     display:flex;
-    align-items:center;
     gap:28px;
     color:var(--dim);
     font-size:14px;
@@ -105,36 +96,32 @@ a{
     border-color:var(--orange);
 }
 
-.nav-btn.primary{
+.primary{
     background:var(--orange);
     border-color:var(--orange);
-    color:#180c05;
+    color:#190c05;
     font-weight:700;
 }
 
-/* HERO */
-
 .hero{
-    min-height:680px;
+    min-height:650px;
+    padding:70px 20px;
     display:flex;
     flex-direction:column;
     align-items:center;
     justify-content:center;
     text-align:center;
-    padding:70px 20px;
 }
 
 .hero-logo{
     width:190px;
     height:190px;
     object-fit:contain;
-    margin-bottom:10px;
 }
 
 .hero h1{
     font-size:54px;
-    margin:0;
-    letter-spacing:-1px;
+    margin:5px 0 0;
 }
 
 .hero h1 span{
@@ -146,40 +133,35 @@ a{
     color:var(--dim);
     font-size:18px;
     line-height:1.7;
-    margin:18px auto 30px;
+    margin:18px 0 30px;
 }
 
 .start{
-    display:inline-block;
     padding:14px 28px;
     border-radius:9px;
     background:var(--orange);
     color:#190c05;
     font-weight:750;
-    border:1px solid var(--orange);
-    transition:.2s;
 }
 
 .start:hover{
-    transform:translateY(-2px);
-    box-shadow:0 8px 30px rgba(255,122,26,.15);
+    box-shadow:0 8px 30px rgba(255,122,26,.18);
 }
-
-/* USO */
 
 .use{
     max-width:1100px;
-    margin:0 auto;
+    margin:auto;
     padding:70px 25px 100px;
     text-align:center;
 }
 
-.use h2{
+.use h2,
+.resources h2{
     font-size:30px;
     margin:0 0 12px;
 }
 
-.use > p{
+.use>p{
     color:var(--dim);
     margin-bottom:35px;
 }
@@ -203,17 +185,15 @@ a{
 .card:hover{
     transform:translateY(-3px);
     border-color:#70401f;
-    background:var(--panel2);
 }
 
-.card .icon{
+.icon{
     font-size:28px;
     margin-bottom:15px;
 }
 
 .card h3{
     margin:0 0 8px;
-    font-size:18px;
 }
 
 .card p{
@@ -223,22 +203,15 @@ a{
     font-size:14px;
 }
 
-/* RECURSOS */
-
 .resources{
     border-top:1px solid var(--border);
     padding:80px 25px;
     text-align:center;
 }
 
-.resources h2{
-    margin:0 0 35px;
-    font-size:30px;
-}
-
 .resource-grid{
     max-width:1050px;
-    margin:auto;
+    margin:35px auto 0;
     display:grid;
     grid-template-columns:repeat(3,1fr);
     gap:14px;
@@ -261,8 +234,6 @@ a{
     line-height:1.5;
 }
 
-/* FOOTER */
-
 footer{
     border-top:1px solid var(--border);
     padding:28px;
@@ -275,8 +246,6 @@ footer strong{
     color:var(--text);
 }
 
-/* MOBILE */
-
 @media(max-width:900px){
 
     .navbar{
@@ -285,15 +254,6 @@ footer strong{
 
     .links{
         display:none;
-    }
-
-    .hero h1{
-        font-size:42px;
-    }
-
-    .hero-logo{
-        width:155px;
-        height:155px;
     }
 
     .cards{
@@ -306,10 +266,6 @@ footer strong{
 }
 
 @media(max-width:550px){
-
-    .navbar{
-        height:72px;
-    }
 
     .brand img{
         width:58px;
@@ -324,16 +280,13 @@ footer strong{
         display:none;
     }
 
-    .hero{
-        min-height:600px;
-    }
-
     .hero h1{
-        font-size:36px;
+        font-size:38px;
     }
 
-    .hero p{
-        font-size:16px;
+    .hero-logo{
+        width:155px;
+        height:155px;
     }
 
     .cards{
@@ -349,7 +302,7 @@ footer strong{
 
     <a href="index.html" class="brand">
         <img src="vetrix-logo-final.png" alt="Vetrix AI">
-        <span>VETRIX <span>AI</span></span>
+        <span>VETRIX <span class="ai">AI</span></span>
     </a>
 
     <nav class="links">
@@ -400,40 +353,63 @@ footer strong{
 
     <div class="cards">
 
-        <a class="card" href="chat.html?modo=estudo&nivel=fundamental">
+        <a class="card"
+           href="chat.html?modo=estudo&nivel=fundamental">
+
             <div class="icon">📘</div>
+
             <h3>Fundamental II</h3>
+
             <p>
                 Explicações, exercícios, resumos e ajuda
                 para os estudos.
             </p>
+
         </a>
 
-        <a class="card" href="chat.html?modo=estudo&nivel=medio">
+
+        <a class="card"
+           href="chat.html?modo=estudo&nivel=medio">
+
             <div class="icon">🎓</div>
+
             <h3>Ensino Médio</h3>
+
             <p>
                 Aprenda conteúdos, revise matérias e
                 resolva dúvidas.
             </p>
+
         </a>
 
-        <a class="card" href="chat.html?modo=estudo&nivel=faculdade">
+
+        <a class="card"
+           href="chat.html?modo=estudo&nivel=faculdade">
+
             <div class="icon">🏫</div>
+
             <h3>Faculdade</h3>
+
             <p>
                 Apoio para matérias, trabalhos, pesquisas
                 e projetos.
             </p>
+
         </a>
 
-        <a class="card" href="chat.html?modo=base">
+
+        <a class="card"
+           href="chat.html?modo=base">
+
             <div class="icon">🌎</div>
+
             <h3>Não sou estudante</h3>
+
             <p>
                 Use o Vetrix para ideias, tecnologia,
                 produtividade e muito mais.
             </p>
+
         </a>
 
     </div>
@@ -466,8 +442,8 @@ footer strong{
         <div class="resource">
             <h3>💻 Tecnologia</h3>
             <p>
-                Ajuda com programação, computadores,
-                tecnologia e projetos digitais.
+                Ajuda com programação, computadores
+                e tecnologia.
             </p>
         </div>
 
@@ -514,7 +490,12 @@ footer strong{
 
 
 <footer id="criadores">
-    Feito por <strong>Luís Felipe Lira</strong> e <strong>Daniel Perez</strong>.
+
+    Feito por
+    <strong>Luís Felipe Lira</strong>
+    e
+    <strong>Daniel Perez</strong>.
+
 </footer>
 
 </body>
