@@ -4,53 +4,301 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Vetrix AI</title>
+
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-html,body{background:#000;min-height:100%;font-family:Arial,sans-serif}
-.page{position:relative;width:100%;max-width:1536px;margin:0 auto;line-height:0}
-.page img{display:block;width:100%;height:auto}
-.hotspot{position:absolute;display:block;cursor:pointer;z-index:5}
-.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
-/* Áreas clicáveis alinhadas com a arte */
-.about{left:68.7%;top:4.6%;width:11.8%;height:6.4%}
-.enter{left:81.9%;top:4.6%;width:14.7%;height:6.4%}
-.fundamental{left:17.0%;top:58.6%;width:21.5%;height:13.0%}
-.medio{left:39.4%;top:58.6%;width:21.5%;height:13.0%}
-.faculdade{left:61.8%;top:58.6%;width:21.5%;height:13.0%}
-.nao-estudante{left:36.9%;top:75.8%;width:26.2%;height:9.0%}
-.comecar{left:34.0%;top:52.8%;width:32.2%;height:7.0%}
-.inicio{left:24.2%;top:3.0%;width:8.0%;height:7.0%}
-.chat{left:33.0%;top:3.0%;width:7.0%;height:7.0%}
-.recursos{left:40.0%;top:3.0%;width:10.5%;height:7.0%}
-.sobre-nav{left:50.0%;top:3.0%;width:7.0%;height:7.0%}
-.criadores{left:57.0%;top:3.0%;width:9.5%;height:7.0%}
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html,body{
+    background:#000;
+    min-height:100%;
+    font-family:Arial,sans-serif;
+}
+
+.page{
+    position:relative;
+    width:100%;
+    max-width:1536px;
+    margin:0 auto;
+    line-height:0;
+}
+
+.page img{
+    display:block;
+    width:100%;
+    height:auto;
+}
+
+.hotspot{
+    position:absolute;
+    display:block;
+    cursor:pointer;
+    z-index:5;
+}
+
+.sr{
+    position:absolute;
+    width:1px;
+    height:1px;
+    overflow:hidden;
+    clip:rect(0,0,0,0);
+}
+
+/* =========================
+   BOTÕES DO TOPO
+========================= */
+
+.about{
+    left:68.7%;
+    top:4.6%;
+    width:11.8%;
+    height:6.4%;
+}
+
+.enter{
+    left:81.9%;
+    top:4.6%;
+    width:14.7%;
+    height:6.4%;
+}
+
+/* =========================
+   ESCOLHA DO NÍVEL
+========================= */
+
+.fundamental{
+    left:17.0%;
+    top:58.6%;
+    width:21.5%;
+    height:13.0%;
+}
+
+.medio{
+    left:39.4%;
+    top:58.6%;
+    width:21.5%;
+    height:13.0%;
+}
+
+.faculdade{
+    left:61.8%;
+    top:58.6%;
+    width:21.5%;
+    height:13.0%;
+}
+
+/* =========================
+   NÃO SOU ESTUDANTE
+========================= */
+
+.nao-estudante{
+    left:36.9%;
+    top:75.8%;
+    width:26.2%;
+    height:9.0%;
+}
+
+/* =========================
+   COMEÇAR
+========================= */
+
+.comecar{
+    left:34.0%;
+    top:52.8%;
+    width:32.2%;
+    height:7.0%;
+}
+
+/* =========================
+   NAVEGAÇÃO
+========================= */
+
+.inicio{
+    left:24.2%;
+    top:3.0%;
+    width:8.0%;
+    height:7.0%;
+}
+
+.chat{
+    left:33.0%;
+    top:3.0%;
+    width:7.0%;
+    height:7.0%;
+}
+
+.recursos{
+    left:40.0%;
+    top:3.0%;
+    width:10.5%;
+    height:7.0%;
+}
+
+.sobre-nav{
+    left:50.0%;
+    top:3.0%;
+    width:7.0%;
+    height:7.0%;
+}
+
+.criadores{
+    left:57.0%;
+    top:3.0%;
+    width:9.5%;
+    height:7.0%;
+}
 
 @media(max-width:700px){
-  .about,.enter{top:2.8%;height:7.5%}
-  .fundamental,.medio,.faculdade{top:58.3%;height:13.5%}
-  .nao-estudante{top:75.3%;height:9.5%}
-  .comecar{top:52.5%;height:7.5%}
+
+    .about,
+    .enter{
+        top:2.8%;
+        height:7.5%;
+    }
+
+    .fundamental,
+    .medio,
+    .faculdade{
+        top:58.3%;
+        height:13.5%;
+    }
+
+    .nao-estudante{
+        top:75.3%;
+        height:9.5%;
+    }
+
+    .comecar{
+        top:52.5%;
+        height:7.5%;
+    }
 }
 </style>
 </head>
+
 <body>
+
 <div class="page">
-  <img src="vetrix-home.png" alt="Tela inicial do Vetrix AI">
 
-  <a class="hotspot about" href="sobre.html" aria-label="Sobre"><span class="sr">Sobre</span></a>
-  <a class="hotspot enter" href="chat.html" aria-label="Entrar"><span class="sr">Entrar</span></a>
+    <img
+        src="vetrix-home.png"
+        alt="Tela inicial do Vetrix AI"
+    >
 
-  <a class="hotspot fundamental" href="chat.html" aria-label="Fundamental II"><span class="sr">Fundamental II</span></a>
-  <a class="hotspot medio" href="chat.html" aria-label="Ensino Médio"><span class="sr">Ensino Médio</span></a>
-  <a class="hotspot faculdade" href="chat.html" aria-label="Faculdade"><span class="sr">Faculdade</span></a>
-  <a class="hotspot nao-estudante" href="chat.html" aria-label="Não sou estudante"><span class="sr">Não sou estudante</span></a>
-  <a class="hotspot comecar" href="chat.html" aria-label="Começar a conversar"><span class="sr">Começar a conversar</span></a>
+    <!-- TOPO -->
 
-  <a class="hotspot inicio" href="index.html" aria-label="Início"><span class="sr">Início</span></a>
-  <a class="hotspot chat" href="chat.html" aria-label="Chat"><span class="sr">Chat</span></a>
-  <a class="hotspot recursos" href="#estudos" aria-label="Recursos"><span class="sr">Recursos</span></a>
-  <a class="hotspot sobre-nav" href="sobre.html" aria-label="Sobre"><span class="sr">Sobre</span></a>
-  <a class="hotspot criadores" href="#criadores" aria-label="Criadores"><span class="sr">Criadores</span></a>
+    <a
+        class="hotspot about"
+        href="sobre.html"
+        aria-label="Sobre"
+    >
+        <span class="sr">Sobre</span>
+    </a>
+
+    <a
+        class="hotspot enter"
+        href="chat.html"
+        aria-label="Entrar"
+    >
+        <span class="sr">Entrar</span>
+    </a>
+
+
+    <!-- NÍVEIS DE ESTUDO -->
+
+    <a
+        class="hotspot fundamental"
+        href="chat.html?modo=estudo&nivel=fundamental"
+        aria-label="Fundamental II"
+    >
+        <span class="sr">Fundamental II</span>
+    </a>
+
+    <a
+        class="hotspot medio"
+        href="chat.html?modo=estudo&nivel=medio"
+        aria-label="Ensino Médio"
+    >
+        <span class="sr">Ensino Médio</span>
+    </a>
+
+    <a
+        class="hotspot faculdade"
+        href="chat.html?modo=estudo&nivel=faculdade"
+        aria-label="Faculdade"
+    >
+        <span class="sr">Faculdade</span>
+    </a>
+
+
+    <!-- NÃO SOU ESTUDANTE -->
+
+    <a
+        class="hotspot nao-estudante"
+        href="chat.html?modo=base"
+        aria-label="Não sou estudante"
+    >
+        <span class="sr">Não sou estudante</span>
+    </a>
+
+
+    <!-- COMEÇAR -->
+
+    <a
+        class="hotspot comecar"
+        href="chat.html?modo=base"
+        aria-label="Começar a conversar"
+    >
+        <span class="sr">Começar a conversar</span>
+    </a>
+
+
+    <!-- NAVEGAÇÃO -->
+
+    <a
+        class="hotspot inicio"
+        href="index.html"
+        aria-label="Início"
+    >
+        <span class="sr">Início</span>
+    </a>
+
+    <a
+        class="hotspot chat"
+        href="chat.html"
+        aria-label="Chat"
+    >
+        <span class="sr">Chat</span>
+    </a>
+
+    <a
+        class="hotspot recursos"
+        href="#estudos"
+        aria-label="Recursos"
+    >
+        <span class="sr">Recursos</span>
+    </a>
+
+    <a
+        class="hotspot sobre-nav"
+        href="sobre.html"
+        aria-label="Sobre"
+    >
+        <span class="sr">Sobre</span>
+    </a>
+
+    <a
+        class="hotspot criadores"
+        href="#criadores"
+        aria-label="Criadores"
+    >
+        <span class="sr">Criadores</span>
+    </a>
+
 </div>
+
 </body>
 </html>
