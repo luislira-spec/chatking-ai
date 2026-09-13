@@ -3,854 +3,519 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Vetrix AI</title>
 
+<!-- Ícone da aba -->
+<link rel="icon" type="image/png" href="vetrix-logo-final.png">
+<link rel="shortcut icon" type="image/png" href="vetrix-logo-final.png">
+
 <style>
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
-
 :root{
-  --bg:#07090b;
-  --orange:#ff8500;
-  --orange2:#ff9d25;
-  --text:#f4f4f4;
-  --muted:#aeb4bd;
+    --bg:#090807;
+    --panel:#110d0a;
+    --panel2:#15100c;
+    --border:#3a2518;
+    --orange:#ff7a1a;
+    --text:#f4eee8;
+    --dim:#a99b8f;
 }
 
-html,body{
-  min-height:100%;
-  background:var(--bg);
-  color:var(--text);
-  font-family:Arial,Helvetica,sans-serif;
+*{
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
 }
 
 body{
-  overflow-x:hidden;
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:"Segoe UI",system-ui,-apple-system,sans-serif;
 }
 
-.page{
-  min-height:100vh;
-  position:relative;
-  background:
-    radial-gradient(
-      circle at 50% 38%,
-      rgba(255,133,0,.045),
-      transparent 30%
-    ),
-    linear-gradient(180deg,#080a0c,#06080a);
+a{
+    color:inherit;
+    text-decoration:none;
 }
 
-/* Detalhes discretos */
-.page::before,
-.page::after{
-  content:"";
-  position:absolute;
-  width:180px;
-  height:1px;
-  background:linear-gradient(
-    90deg,
-    transparent,
-    var(--orange)
-  );
-  opacity:.7;
-  pointer-events:none;
-}
+/* NAVBAR */
 
-.page::before{
-  left:-35px;
-  top:105px;
-  transform:rotate(-45deg);
-}
-
-.page::after{
-  right:-35px;
-  bottom:105px;
-  transform:rotate(-45deg);
-}
-
-/* =========================
-   TOPO
-========================= */
-
-.topbar{
-  height:84px;
-  border-bottom:1px solid #20252b;
-
-  display:flex;
-  align-items:center;
-
-  padding:0 6.5%;
-
-  position:relative;
-  z-index:10;
+.navbar{
+    height:82px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 42px;
+    border-bottom:1px solid var(--border);
+    background:rgba(9,8,7,.96);
+    position:sticky;
+    top:0;
+    z-index:20;
 }
 
 .brand{
-  display:flex;
-  align-items:center;
-  gap:12px;
-
-  min-width:245px;
-
-  text-decoration:none;
-  color:inherit;
+    display:flex;
+    align-items:center;
+    gap:12px;
+    font-size:20px;
+    font-weight:750;
+    letter-spacing:.3px;
 }
 
 .brand img{
-  width:67px;
-  height:67px;
-  object-fit:contain;
+    width:67px;
+    height:67px;
+    object-fit:contain;
 }
 
-.brand-name{
-  font-size:25px;
-  font-weight:800;
-  letter-spacing:.5px;
+.brand span span{
+    color:var(--orange);
 }
 
-.brand-name span{
-  color:var(--orange);
+.links{
+    display:flex;
+    align-items:center;
+    gap:28px;
+    color:var(--dim);
+    font-size:14px;
 }
 
-/* Navegação */
-
-.nav{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  gap:45px;
-  flex:1;
+.links a:hover{
+    color:var(--orange);
 }
 
-.nav a{
-  color:#c8cdd4;
-  text-decoration:none;
-
-  font-size:16px;
-
-  padding:31px 0 27px;
-
-  border-bottom:3px solid transparent;
-
-  transition:.2s;
+.nav-buttons{
+    display:flex;
+    gap:10px;
 }
 
-.nav a:hover,
-.nav a.active{
-  color:var(--orange);
-  border-bottom-color:var(--orange);
+.nav-btn{
+    padding:10px 17px;
+    border:1px solid var(--border);
+    border-radius:8px;
+    background:transparent;
+    color:var(--text);
+    cursor:pointer;
 }
 
-/* Botões do topo */
-
-.actions{
-  display:flex;
-  align-items:center;
-
-  gap:14px;
-
-  min-width:245px;
-
-  justify-content:flex-end;
+.nav-btn:hover{
+    border-color:var(--orange);
 }
 
-.action-btn{
-  height:42px;
-
-  padding:0 22px;
-
-  border-radius:22px;
-
-  background:transparent;
-
-  color:#e9edf2;
-
-  border:1px solid #727983;
-
-  text-decoration:none;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  font-size:14px;
-
-  transition:.2s;
+.nav-btn.primary{
+    background:var(--orange);
+    border-color:var(--orange);
+    color:#180c05;
+    font-weight:700;
 }
 
-.action-btn:hover{
-  border-color:var(--orange);
-  color:var(--orange);
+/* HERO */
+
+.hero{
+    min-height:680px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:70px 20px;
 }
-
-.action-btn.enter{
-  border-color:var(--orange);
-  color:var(--orange);
-}
-
-/* =========================
-   CONTEÚDO
-========================= */
-
-.main{
-  width:min(1100px,92%);
-
-  margin:0 auto;
-
-  padding:62px 0 38px;
-
-  text-align:center;
-}
-
-/* Logo central */
 
 .hero-logo{
-  width:155px;
-  height:155px;
-
-  object-fit:contain;
-
-  display:block;
-
-  margin:0 auto 8px;
+    width:190px;
+    height:190px;
+    object-fit:contain;
+    margin-bottom:10px;
 }
 
-h1{
-  font-size:50px;
-
-  line-height:1;
-
-  letter-spacing:-1px;
-
-  margin-bottom:22px;
-
-  font-weight:800;
+.hero h1{
+    font-size:54px;
+    margin:0;
+    letter-spacing:-1px;
 }
 
-.subtitle{
-  max-width:560px;
-
-  margin:0 auto;
-
-  color:#b8bec7;
-
-  font-size:20px;
-
-  line-height:1.45;
+.hero h1 span{
+    color:var(--orange);
 }
 
-/* Botão começar */
-
-.cta{
-  display:inline-flex;
-
-  align-items:center;
-  justify-content:center;
-
-  gap:24px;
-
-  margin-top:30px;
-
-  min-width:265px;
-  height:58px;
-
-  border-radius:30px;
-
-  background:var(--orange);
-
-  color:#090a0b;
-
-  font-weight:700;
-
-  font-size:18px;
-
-  text-decoration:none;
-
-  transition:.2s;
-
-  box-shadow:
-    0 0 24px rgba(255,133,0,.12);
+.hero p{
+    max-width:720px;
+    color:var(--dim);
+    font-size:18px;
+    line-height:1.7;
+    margin:18px auto 30px;
 }
 
-.cta:hover{
-  background:var(--orange2);
-
-  transform:translateY(-1px);
+.start{
+    display:inline-block;
+    padding:14px 28px;
+    border-radius:9px;
+    background:var(--orange);
+    color:#190c05;
+    font-weight:750;
+    border:1px solid var(--orange);
+    transition:.2s;
 }
 
-.cta .arrow{
-  font-size:25px;
+.start:hover{
+    transform:translateY(-2px);
+    box-shadow:0 8px 30px rgba(255,122,26,.15);
 }
 
-/* =========================
-   TÍTULO DOS CARTÕES
-========================= */
+/* USO */
 
-.section-title{
-  margin:34px auto 26px;
-
-  display:flex;
-
-  align-items:center;
-
-  gap:28px;
-
-  color:#c9ced5;
-
-  font-size:16px;
-
-  justify-content:center;
+.use{
+    max-width:1100px;
+    margin:0 auto;
+    padding:70px 25px 100px;
+    text-align:center;
 }
 
-.section-title::before,
-.section-title::after{
-  content:"";
-
-  height:1px;
-
-  width:205px;
-
-  background:#505861;
+.use h2{
+    font-size:30px;
+    margin:0 0 12px;
 }
 
-/* =========================
-   CARTÕES
-========================= */
+.use > p{
+    color:var(--dim);
+    margin-bottom:35px;
+}
 
 .cards{
-  display:grid;
-
-  grid-template-columns:
-    repeat(4,1fr);
-
-  gap:20px;
-
-  text-align:center;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:14px;
 }
 
 .card{
-  min-height:218px;
-
-  padding:25px 18px 20px;
-
-  border:1px solid #b55c00;
-
-  border-radius:15px;
-
-  background:
-    linear-gradient(
-      145deg,
-      rgba(12,15,18,.85),
-      rgba(7,9,11,.95)
-    );
-
-  text-decoration:none;
-
-  color:inherit;
-
-  display:flex;
-
-  flex-direction:column;
-
-  align-items:center;
-
-  transition:.2s;
+    min-height:170px;
+    padding:25px 20px;
+    border:1px solid var(--border);
+    border-radius:12px;
+    background:var(--panel);
+    text-align:left;
+    transition:.2s;
 }
 
 .card:hover{
-  transform:translateY(-3px);
-
-  border-color:var(--orange);
-
-  box-shadow:
-    0 8px 30px
-    rgba(255,133,0,.08);
+    transform:translateY(-3px);
+    border-color:#70401f;
+    background:var(--panel2);
 }
 
-.icon{
-  width:50px;
-  height:50px;
-
-  display:flex;
-
-  align-items:center;
-  justify-content:center;
-
-  color:var(--orange);
-
-  font-size:38px;
-
-  margin-bottom:12px;
+.card .icon{
+    font-size:28px;
+    margin-bottom:15px;
 }
 
-.card h2{
-  font-size:20px;
-
-  line-height:1.2;
-
-  margin-bottom:10px;
+.card h3{
+    margin:0 0 8px;
+    font-size:18px;
 }
 
 .card p{
-  color:#aeb4bd;
-
-  font-size:15px;
-
-  line-height:1.35;
-
-  min-height:40px;
+    margin:0;
+    color:var(--dim);
+    line-height:1.5;
+    font-size:14px;
 }
 
-.card-arrow{
-  width:34px;
-  height:34px;
+/* RECURSOS */
 
-  border:1px solid var(--orange);
-
-  border-radius:50%;
-
-  display:flex;
-
-  align-items:center;
-  justify-content:center;
-
-  color:var(--orange);
-
-  font-size:20px;
-
-  margin-top:auto;
+.resources{
+    border-top:1px solid var(--border);
+    padding:80px 25px;
+    text-align:center;
 }
 
-/* =========================
-   RODAPÉ
-========================= */
-
-.footer{
-  margin-top:48px;
-
-  display:flex;
-
-  align-items:center;
-  justify-content:center;
-
-  gap:28px;
-
-  color:#858c96;
-
-  font-size:14px;
+.resources h2{
+    margin:0 0 35px;
+    font-size:30px;
 }
 
-.footer::before,
-.footer::after{
-  content:"";
-
-  width:115px;
-
-  height:1px;
-
-  background:#394048;
+.resource-grid{
+    max-width:1050px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:14px;
 }
 
-/* =========================
-   TABLET
-========================= */
+.resource{
+    padding:25px;
+    border:1px solid var(--border);
+    border-radius:10px;
+    background:var(--panel);
+    text-align:left;
+}
+
+.resource h3{
+    margin-top:0;
+}
+
+.resource p{
+    color:var(--dim);
+    line-height:1.5;
+}
+
+/* FOOTER */
+
+footer{
+    border-top:1px solid var(--border);
+    padding:28px;
+    text-align:center;
+    color:var(--dim);
+    font-size:13px;
+}
+
+footer strong{
+    color:var(--text);
+}
+
+/* MOBILE */
 
 @media(max-width:900px){
 
-  .topbar{
-    padding:0 4%;
-  }
+    .navbar{
+        padding:0 18px;
+    }
 
-  .nav{
-    gap:20px;
-  }
+    .links{
+        display:none;
+    }
 
-  .brand{
-    min-width:auto;
-  }
+    .hero h1{
+        font-size:42px;
+    }
 
-  .actions{
-    min-width:auto;
-  }
+    .hero-logo{
+        width:155px;
+        height:155px;
+    }
 
-  .cards{
-    grid-template-columns:
-      repeat(2,1fr);
-  }
+    .cards{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .resource-grid{
+        grid-template-columns:1fr;
+    }
 }
 
-/* =========================
-   CELULAR
-========================= */
+@media(max-width:550px){
 
-@media(max-width:650px){
+    .navbar{
+        height:72px;
+    }
 
-  .topbar{
-    height:auto;
+    .brand img{
+        width:58px;
+        height:58px;
+    }
 
-    min-height:78px;
+    .brand{
+        font-size:17px;
+    }
 
-    padding:10px 5%;
+    .nav-buttons .nav-btn:first-child{
+        display:none;
+    }
 
-    flex-wrap:wrap;
+    .hero{
+        min-height:600px;
+    }
 
-    gap:8px;
-  }
+    .hero h1{
+        font-size:36px;
+    }
 
-  .brand{
-    flex:1;
-  }
+    .hero p{
+        font-size:16px;
+    }
 
-  .brand img{
-    width:55px;
-    height:55px;
-  }
-
-  .brand-name{
-    font-size:20px;
-  }
-
-  .nav{
-    order:3;
-
-    width:100%;
-
-    overflow-x:auto;
-
-    justify-content:flex-start;
-
-    gap:25px;
-  }
-
-  .nav a{
-    padding:10px 0 12px;
-
-    white-space:nowrap;
-  }
-
-  .actions{
-    gap:7px;
-  }
-
-  .action-btn{
-    height:36px;
-
-    padding:0 14px;
-
-    font-size:13px;
-  }
-
-  .main{
-    padding-top:35px;
-  }
-
-  .hero-logo{
-    width:120px;
-    height:120px;
-  }
-
-  h1{
-    font-size:37px;
-  }
-
-  .subtitle{
-    font-size:17px;
-  }
-
-  .section-title{
-    gap:10px;
-  }
-
-  .section-title::before,
-  .section-title::after{
-    width:55px;
-  }
-
-  .cards{
-    grid-template-columns:1fr;
-  }
-
-  .footer::before,
-  .footer::after{
-    width:55px;
-  }
+    .cards{
+        grid-template-columns:1fr;
+    }
 }
 </style>
 </head>
 
 <body>
 
-<div class="page">
+<header class="navbar">
 
-  <!-- =========================
-       TOPO
-  ========================== -->
-
-  <header class="topbar">
-
-    <a
-      class="brand"
-      href="index.html"
-      aria-label="Vetrix AI - Início"
-    >
-
-      <img
-        src="vetrix-logo-final.png"
-        alt="Logo Vetrix AI"
-      >
-
-      <div class="brand-name">
-        VETRIX <span>AI</span>
-      </div>
-
+    <a href="index.html" class="brand">
+        <img src="vetrix-logo-final.png" alt="Vetrix AI">
+        <span>VETRIX <span>AI</span></span>
     </a>
 
-
-    <nav
-      class="nav"
-      aria-label="Navegação principal"
-    >
-
-      <a
-        class="active"
-        href="index.html"
-      >
-        Início
-      </a>
-
-      <a
-        href="chat.html?modo=base"
-      >
-        Chat
-      </a>
-
-      <a href="#recursos">
-        Recursos
-      </a>
-
-      <a href="sobre.html">
-        Sobre
-      </a>
-
-      <a href="#criadores">
-        Criadores
-      </a>
-
+    <nav class="links">
+        <a href="index.html">Início</a>
+        <a href="chat.html?modo=base">Chat</a>
+        <a href="#recursos">Recursos</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#criadores">Criadores</a>
     </nav>
 
-
-    <div class="actions">
-
-      <a
-        class="action-btn"
-        href="sobre.html"
-      >
-        ⓘ &nbsp;Sobre
-      </a>
-
-      <a
-        class="action-btn enter"
-        href="chat.html?modo=base"
-      >
-        Entrar
-      </a>
-
+    <div class="nav-buttons">
+        <a class="nav-btn" href="#sobre">Sobre</a>
+        <a class="nav-btn primary" href="chat.html?modo=base">Entrar</a>
     </div>
 
-  </header>
+</header>
 
 
-  <!-- =========================
-       CONTEÚDO PRINCIPAL
-  ========================== -->
-
-  <main class="main">
+<section class="hero">
 
     <img
-      class="hero-logo"
-      src="vetrix-logo-final.png"
-      alt="Logo Vetrix AI"
+        class="hero-logo"
+        src="vetrix-logo-final.png"
+        alt="Logo Vetrix AI"
     >
 
+    <h1>VETRIX <span>AI</span></h1>
 
-    <h1>
-      VETRIX
-      <span style="color:var(--orange)">
-        AI
-      </span>
-    </h1>
-
-
-    <p class="subtitle">
-
-      Uma inteligência artificial criada para ajudar<br>
-
-      você a aprender, criar, resolver e ir mais longe.
-
+    <p>
+        Uma inteligência artificial criada para ajudar você
+        a aprender, criar, resolver e ir mais longe.
     </p>
 
-
-    <a
-      class="cta"
-      href="chat.html?modo=base"
-    >
-
-      Começar agora
-
-      <span class="arrow">
-        →
-      </span>
-
+    <a class="start" href="chat.html?modo=base">
+        Começar agora
     </a>
 
+</section>
 
-    <div class="section-title">
 
-      <span>
-        Como você pretende usar o Vetrix?
-      </span>
+<section class="use">
+
+    <h2>Como você pretende usar o Vetrix?</h2>
+
+    <p>
+        Escolha uma opção para personalizar sua experiência.
+    </p>
+
+    <div class="cards">
+
+        <a class="card" href="chat.html?modo=estudo&nivel=fundamental">
+            <div class="icon">📘</div>
+            <h3>Fundamental II</h3>
+            <p>
+                Explicações, exercícios, resumos e ajuda
+                para os estudos.
+            </p>
+        </a>
+
+        <a class="card" href="chat.html?modo=estudo&nivel=medio">
+            <div class="icon">🎓</div>
+            <h3>Ensino Médio</h3>
+            <p>
+                Aprenda conteúdos, revise matérias e
+                resolva dúvidas.
+            </p>
+        </a>
+
+        <a class="card" href="chat.html?modo=estudo&nivel=faculdade">
+            <div class="icon">🏫</div>
+            <h3>Faculdade</h3>
+            <p>
+                Apoio para matérias, trabalhos, pesquisas
+                e projetos.
+            </p>
+        </a>
+
+        <a class="card" href="chat.html?modo=base">
+            <div class="icon">🌎</div>
+            <h3>Não sou estudante</h3>
+            <p>
+                Use o Vetrix para ideias, tecnologia,
+                produtividade e muito mais.
+            </p>
+        </a>
 
     </div>
 
-
-    <!-- =========================
-         OPÇÕES
-    ========================== -->
-
-    <section
-      class="cards"
-      aria-label="Opções do Vetrix"
-    >
+</section>
 
 
-      <!-- FUNDAMENTAL II -->
+<section class="resources" id="recursos">
 
-      <a
-        class="card"
-        href="chat.html?modo=estudo&nivel=fundamental"
-      >
+    <h2>Recursos do Vetrix</h2>
 
-        <div class="icon">
-          🎓
+    <div class="resource-grid">
+
+        <div class="resource">
+            <h3>📚 Estudos</h3>
+            <p>
+                Aprenda assuntos de diferentes áreas
+                com explicações adaptadas.
+            </p>
         </div>
 
-        <h2>
-          Fundamental II
-        </h2>
-
-        <p>
-          6º ao 9º ano
-        </p>
-
-        <div class="card-arrow">
-          →
+        <div class="resource">
+            <h3>💡 Ideias e projetos</h3>
+            <p>
+                Crie projetos, organize ideias e
+                desenvolva novas soluções.
+            </p>
         </div>
 
-      </a>
-
-
-      <!-- ENSINO MÉDIO -->
-
-      <a
-        class="card"
-        href="chat.html?modo=estudo&nivel=medio"
-      >
-
-        <div class="icon">
-          🎓
+        <div class="resource">
+            <h3>💻 Tecnologia</h3>
+            <p>
+                Ajuda com programação, computadores,
+                tecnologia e projetos digitais.
+            </p>
         </div>
 
-        <h2>
-          Ensino Médio
-        </h2>
-
-        <p>
-          1º ao 3º ano
-        </p>
-
-        <div class="card-arrow">
-          →
+        <div class="resource">
+            <h3>✍️ Criação</h3>
+            <p>
+                Escreva, organize textos e desenvolva
+                conteúdos.
+            </p>
         </div>
 
-      </a>
-
-
-      <!-- FACULDADE -->
-
-      <a
-        class="card"
-        href="chat.html?modo=estudo&nivel=faculdade"
-      >
-
-        <div class="icon">
-          🏛
+        <div class="resource">
+            <h3>🔎 Pesquisa</h3>
+            <p>
+                Explore assuntos e organize informações
+                de forma simples.
+            </p>
         </div>
 
-        <h2>
-          Faculdade
-        </h2>
-
-        <p>
-          Graduação e pós
-        </p>
-
-        <div class="card-arrow">
-          →
+        <div class="resource">
+            <h3>✨ E muito mais!</h3>
+            <p>
+                O Vetrix foi criado para acompanhar
+                diferentes necessidades.
+            </p>
         </div>
 
-      </a>
+    </div>
+
+</section>
 
 
-      <!-- NÃO SOU ESTUDANTE -->
+<section class="resources" id="sobre">
 
-      <a
-        class="card"
-        href="chat.html?modo=base&onboarding=objetivos"
-      >
+    <h2>Sobre o Vetrix</h2>
 
-        <div class="icon">
-          ♙
-        </div>
+    <p style="max-width:700px;margin:auto;color:var(--dim);line-height:1.7;">
+        O Vetrix AI é uma inteligência artificial
+        pensada para ajudar pessoas a aprender,
+        criar, pesquisar e resolver problemas.
+    </p>
 
-        <h2>
-          Não sou estudante
-        </h2>
-
-        <p>
-          Quero usar o Vetrix para outros objetivos.
-        </p>
-
-        <div class="card-arrow">
-          →
-        </div>
-
-      </a>
-
-    </section>
+</section>
 
 
-    <!-- =========================
-         RODAPÉ
-    ========================== -->
-
-    <footer
-      class="footer"
-      id="criadores"
-    >
-
-      <span>
-        Juntos, construímos um futuro mais inteligente.
-      </span>
-
-    </footer>
-
-  </main>
-
-</div>
+<footer id="criadores">
+    Feito por <strong>Luís Felipe Lira</strong> e <strong>Daniel Perez</strong>.
+</footer>
 
 </body>
 </html>
