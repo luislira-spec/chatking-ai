@@ -2,608 +2,158 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Vetrix AI</title>
-
 <style>
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    background: #080706;
-    color: #f2ede6;
-    font-family: "Segoe UI", Arial, sans-serif;
-    min-height: 100vh;
-}
-
-/* =========================
-   TOPO
-========================= */
-
-.topbar {
-    height: 90px;
-    border-bottom: 1px solid #3a2416;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    padding: 0 32px;
-}
-
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-
-    font-size: 22px;
-    font-weight: 700;
-    letter-spacing: 0.5px;
-}
-
-.logo img {
-    width: 48px;
-    height: 48px;
-    object-fit: contain;
-
-    filter: drop-shadow(0 0 8px rgba(255,122,26,0.25));
-}
-
-.ai {
-    color: #ff7a1a;
-}
-
-.topbar-right {
-    display: flex;
-    gap: 12px;
-}
-
-.top-btn {
-    border: 1px solid #7a4420;
-    border-radius: 6px;
-
-    padding: 11px 17px;
-
-    color: #f2ede6;
-    background: transparent;
-
-    text-decoration: none;
-    font-size: 14px;
-
-    cursor: pointer;
-}
-
-.top-btn:hover {
-    border-color: #ff7a1a;
-}
-
-.top-btn.inicio {
-    border-color: #ff7a1a;
-    color: #ff7a1a;
-}
-
-/* =========================
-   CORPO
-========================= */
-
-.body-layout {
-    display: flex;
-    min-height: calc(100vh - 90px);
-}
-
-/* =========================
-   MENU LATERAL
-========================= */
-
-.sidebar {
-    width: 250px;
-
-    border-right: 1px solid #3a2416;
-
-    padding: 24px 16px;
-
-    flex-shrink: 0;
-}
-
-.nav-item {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-
-    padding: 13px 14px;
-
-    border-radius: 6px;
-
-    color: #a89a8c;
-
-    font-size: 15px;
-
-    margin-bottom: 6px;
-
-    cursor: pointer;
-}
-
-.nav-item:hover {
-    background: rgba(255,122,26,0.06);
-    color: #f2ede6;
-}
-
-.nav-item.active {
-    background: rgba(255,122,26,0.09);
-
-    border: 1px solid #7a4420;
-
-    color: #ff7a1a;
-}
-
-/* =========================
-   ÁREA PRINCIPAL
-========================= */
-
-.main {
-    flex: 1;
-
-    padding: 55px 40px;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    text-align: center;
-}
-
-/* =========================
-   LOGO CENTRAL
-========================= */
-
-.hero-logo {
-    width: 130px;
-    height: 130px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    margin-bottom: 20px;
-}
-
-.hero-logo img {
-    width: 130px;
-    height: 130px;
-
-    object-fit: contain;
-
-    filter: drop-shadow(0 0 12px rgba(255,122,26,0.25));
-}
-
-/* =========================
-   TÍTULO
-========================= */
-
-h1 {
-    font-size: 36px;
-    margin-bottom: 12px;
-}
-
-h1 span {
-    color: #ff7a1a;
-}
-
-.subtitle {
-    font-size: 19px;
-    margin-bottom: 10px;
-}
-
-.subtitle span {
-    color: #ff7a1a;
-    font-weight: 600;
-}
-
-.description {
-    max-width: 620px;
-
-    color: #a89a8c;
-
-    font-size: 15px;
-
-    line-height: 1.6;
-
-    margin-bottom: 42px;
-}
-
-/* =========================
-   CAIXA DE PERGUNTA
-========================= */
-
-.input-row {
-    width: 100%;
-    max-width: 900px;
-
-    display: flex;
-    align-items: center;
-
-    gap: 12px;
-
-    border: 1px solid #7a4420;
-
-    border-radius: 8px;
-
-    padding: 12px 14px 12px 18px;
-
-    background: #120d0a;
-}
-
-.input-row:focus-within {
-    border-color: #ff7a1a;
-    box-shadow: 0 0 0 2px rgba(255,122,26,0.08);
-}
-
-.input-icon {
-    font-size: 20px;
-}
-
-#pergunta {
-    flex: 1;
-
-    height: 44px;
-
-    background: transparent;
-
-    border: none;
-    outline: none;
-
-    color: #f2ede6;
-
-    font-size: 15px;
-}
-
-#pergunta::placeholder {
-    color: #756a61;
-}
-
-.send-btn {
-    width: 42px;
-    height: 42px;
-
-    border: none;
-
-    border-radius: 6px;
-
-    background: #ff7a1a;
-
-    color: #1a0e05;
-
-    font-size: 18px;
-
-    cursor: pointer;
-}
-
-.send-btn:hover {
-    opacity: 0.9;
-}
-
-/* =========================
-   RESPOSTAS
-========================= */
-
-#respostas {
-    width: 100%;
-    max-width: 900px;
-
-    margin-top: 20px;
-}
-
-.mensagem {
-    text-align: left;
-
-    padding: 15px 18px;
-
-    margin-bottom: 10px;
-
-    border: 1px solid #3a2416;
-
-    border-radius: 7px;
-
-    background: #100c09;
-
-    line-height: 1.5;
-}
-
-.mensagem.usuario {
-    border-left: 3px solid #ff7a1a;
-}
-
-.mensagem.vetrix {
-    border-left: 3px solid #7a4420;
-}
-
-/* =========================
-   RODAPÉ
-========================= */
-
-.footer {
-    margin-top: auto;
-
-    padding-top: 45px;
-
-    color: #756a61;
-
-    font-size: 13px;
-}
-
-.footer b {
-    color: #f2ede6;
-}
-
-/* =========================
-   CELULAR
-========================= */
-
-@media (max-width: 700px) {
-
-    .topbar {
-        height: 80px;
-        padding: 0 15px;
-    }
-
-    .logo {
-        font-size: 19px;
-    }
-
-    .logo img {
-        width: 38px;
-        height: 38px;
-    }
-
-    .topbar-right {
-        gap: 5px;
-    }
-
-    .top-btn {
-        padding: 9px 10px;
-        font-size: 12px;
-    }
-
-    .sidebar {
-        display: none;
-    }
-
-    .body-layout {
-        min-height: calc(100vh - 80px);
-    }
-
-    .main {
-        padding: 45px 18px 20px;
-    }
-
-    .hero-logo,
-    .hero-logo img {
-        width: 95px;
-        height: 95px;
-    }
-
-    h1 {
-        font-size: 29px;
-    }
-
-    .description {
-        font-size: 14px;
-    }
-}
+:root{--bg:#0a0806;--panel:#120d0a;--border:#3a2416;--orange:#ff7a1a;--dim:#a89a8c;--text:#f2ede6}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:"Segoe UI",system-ui,sans-serif}
+.topbar{height:90px;padding:14px 28px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);background:#0d0907}
+.logo{display:flex;align-items:center;gap:12px;font-size:22px;font-weight:700}.logo img{width:58px;height:58px;object-fit:contain}.ai,.mode{color:var(--orange)}
+.topbar-right{display:flex;gap:10px}.pill{padding:9px 15px;border:1px solid #7a4420;border-radius:7px;background:transparent;color:var(--text);cursor:pointer}
+.layout{display:flex;min-height:calc(100vh - 90px)}.sidebar{width:250px;padding:24px 16px;border-right:1px solid var(--border);background:#0d0907}
+.nav{width:100%;padding:12px 14px;margin-bottom:6px;text-align:left;border:1px solid transparent;border-radius:7px;background:transparent;color:var(--dim);cursor:pointer}.nav:hover,.nav.active{border-color:#7a4420;color:var(--orange);background:rgba(255,122,26,.08)}
+.modeBtn{margin-top:16px;padding-top:16px;border-top:1px solid var(--border)}
+.main{flex:1;padding:55px 40px;display:flex;flex-direction:column;align-items:center;text-align:center}.hero{width:145px;height:145px;object-fit:contain}
+h1{font-size:34px;margin:8px 0}.desc{max-width:650px;color:var(--dim);line-height:1.6;margin:0 0 28px}
+.quick{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:28px}.quick button{padding:9px 14px;border:1px solid var(--border);border-radius:7px;background:var(--panel);color:var(--dim);cursor:pointer}
+.input{width:min(900px,100%);display:flex;gap:10px;padding:12px 14px;border:1px solid #7a4420;border-radius:9px;background:var(--panel)}
+textarea{flex:1;resize:none;min-height:28px;background:transparent;border:0;outline:0;color:var(--text)}.send{width:40px;border:0;border-radius:7px;background:var(--orange);cursor:pointer}
+.response{display:none;width:min(900px,100%);margin-top:18px;padding:18px;border:1px solid var(--border);border-radius:9px;background:var(--panel);text-align:left}
+.overlay{position:fixed;inset:0;z-index:99;display:none;align-items:center;justify-content:center;padding:20px;background:rgba(0,0,0,.84);backdrop-filter:blur(5px)}.overlay.show{display:flex}
+.card{width:min(700px,100%);max-height:90vh;overflow:auto;padding:30px;border:1px solid #7a4420;border-radius:14px;background:#110b08;box-shadow:0 20px 70px #000}
+.progress{height:4px;background:#291b12;margin-bottom:25px;border-radius:9px}.bar{height:100%;width:50%;background:var(--orange)}
+h2{margin:0 0 9px}.sub{color:var(--dim);line-height:1.5;margin-bottom:22px}
+.options,.goals{display:grid;grid-template-columns:1fr 1fr;gap:10px}.option,.goal{padding:15px;border:1px solid var(--border);border-radius:9px;background:var(--panel);color:var(--text);text-align:left;cursor:pointer}.option.selected{border-color:var(--orange);background:rgba(255,122,26,.08)}
+.option small{display:block;color:var(--dim);margin-top:4px}.goal{display:flex;gap:9px;cursor:pointer}.goal input{accent-color:var(--orange)}
+.form{margin-top:12px}.form label{display:block;color:var(--dim);font-size:14px;margin:12px 0 7px}.form input,.form select,.form textarea{width:100%;padding:13px;border:1px solid var(--border);border-radius:8px;background:var(--panel);color:var(--text);outline:0}.form textarea{min-height:110px}
+.other{display:none}.other.show{display:block}.actions{display:flex;justify-content:flex-end;gap:10px;margin-top:25px}.back,.continue{padding:12px 20px;border-radius:8px;cursor:pointer}.back{background:transparent;color:var(--dim);border:1px solid var(--border)}.continue{background:var(--orange);border:1px solid var(--orange);color:#1a0e05;font-weight:700}.continue:disabled{opacity:.4;cursor:not-allowed}
+@media(max-width:750px){.sidebar{width:72px;padding:15px 8px}.nav{padding:12px 5px;text-align:center}.label{display:none}.topbar{padding:10px 15px}.topbar-right .pill{padding:7px 9px;font-size:12px}.main{padding:35px 18px}.options,.goals{grid-template-columns:1fr}.card{padding:22px}}
 </style>
 </head>
-
 <body>
-
-<!-- =========================
-     TOPO
-========================= -->
-
 <header class="topbar">
-
-    <div class="logo">
-
-        <img src="vetrix-logo-final.png" alt="Logo Vetrix AI">
-
-        <div>
-            VETRIX <span class="ai">AI</span>
-        </div>
-
-    </div>
-
-    <div class="topbar-right">
-
-        <div class="top-btn">
-            👤 Luís⌄
-        </div>
-
-        <a href="index.html" class="top-btn inicio">
-            🏠 INÍCIO
-        </a>
-
-    </div>
-
+  <div class="logo"><img src="vetrix-logo-final.png" alt="Vetrix AI"><span>VETRIX <span class="ai">AI</span></span></div>
+  <div class="topbar-right"><button class="pill">👤 Luís⌄</button><button class="pill" onclick="location.href='index.html'">🏠 INÍCIO</button></div>
 </header>
 
+<div class="layout">
+<aside class="sidebar">
+  <button class="nav active" onclick="location.href='chat.html'">🏠 <span class="label">Início</span></button>
+  <button class="nav" onclick="nova()">💬 <span class="label">Nova conversa</span></button>
+  <button class="nav">📖 <span class="label">Histórico</span></button>
+  <button class="nav">⚙️ <span class="label">Configurações</span></button>
+  <button class="nav">❓ <span class="label">Ajuda</span></button>
+  <div class="modeBtn"><button class="nav" id="modeButton" onclick="trocarModo()">📚 <span class="label">Modo Estudo</span></button></div>
+</aside>
 
-<!-- =========================
-     CORPO
-========================= -->
-
-<div class="body-layout">
-
-
-    <!-- MENU LATERAL -->
-
-    <aside class="sidebar">
-
-        <div class="nav-item active">
-            🏠 Início
-        </div>
-
-        <div class="nav-item" onclick="novaConversa()">
-            💬 Nova conversa
-        </div>
-
-        <div class="nav-item">
-            📖 Histórico
-        </div>
-
-        <div class="nav-item">
-            ⚙️ Configurações
-        </div>
-
-        <div class="nav-item">
-            ❓ Ajuda
-        </div>
-
-    </aside>
-
-
-    <!-- ÁREA PRINCIPAL -->
-
-    <main class="main">
-
-        <div class="hero-logo">
-
-            <img
-                src="vetrix-logo-final.png"
-                alt="Vetrix AI"
-            >
-
-        </div>
-
-
-        <h1>
-            Olá, <span>Luís!</span>
-        </h1>
-
-
-        <div class="subtitle">
-            Você está no <span>modo base.</span>
-        </div>
-
-
-        <p class="description">
-            Pode fazer perguntas, tirar dúvidas, pedir ideias,
-            conversar e muito mais. Estou aqui para te ajudar!
-        </p>
-
-
-        <!-- CAIXA DE PERGUNTA -->
-
-        <div class="input-row">
-
-            <div class="input-icon">
-                ✨
-            </div>
-
-            <input
-                id="pergunta"
-                type="text"
-                placeholder="Digite sua pergunta..."
-            >
-
-            <button
-                class="send-btn"
-                onclick="enviarPergunta()"
-            >
-                ➤
-            </button>
-
-        </div>
-
-
-        <!-- RESPOSTAS -->
-
-        <div id="respostas"></div>
-
-
-        <!-- RODAPÉ -->
-
-        <div class="footer">
-            Feito por <b>Luís Felipe Lira e Daniel Perez.</b>
-        </div>
-
-    </main>
-
+<main class="main">
+  <img class="hero" src="vetrix-logo-final.png" alt="Vetrix AI">
+  <h1>Olá, <span class="ai">Luís!</span></h1>
+  <p>Você está no <span class="mode" id="modeText">modo base</span>.</p>
+  <p class="desc" id="description">Pode fazer perguntas, tirar dúvidas, pedir ideias, conversar e muito mais. Estou aqui para te ajudar.</p>
+  <div class="quick">
+    <button onclick="preencher('Explique este assunto para mim de forma simples.')">Explicar</button>
+    <button onclick="preencher('Me ajude a criar uma ideia de projeto.')">Criar uma ideia</button>
+    <button onclick="preencher('Pesquise e me explique este assunto.')">Pesquisar</button>
+    <button onclick="preencher('Me ajude com tecnologia e programação.')">Tecnologia</button>
+  </div>
+  <div class="input"><textarea id="question" placeholder="Digite sua pergunta para o Vetrix..."></textarea><button class="send" onclick="enviar()">➤</button></div>
+  <div class="response" id="response"></div>
+</main>
 </div>
 
+<div class="overlay" id="overlay">
+<div class="card">
+  <div class="progress"><div class="bar" id="bar"></div></div>
+  <div id="content"></div>
+  <div class="actions"><button class="back" id="back" onclick="voltar()">Voltar</button><button class="continue" id="continue" onclick="continuar()">Continuar →</button></div>
+</div>
+</div>
 
 <script>
+const KEY="vetrixPerfil";
+let perfil=JSON.parse(localStorage.getItem(KEY)||"null");
+let dados={modo:null,nivel:null,serie:"",curso:"",periodo:"",objetivos:[],outroObjetivo:""};
+let etapa=1;
+const p=new URLSearchParams(location.search);
+const entradaModo=p.get("modo"),entradaNivel=p.get("nivel");
+const overlay=document.getElementById("overlay"),content=document.getElementById("content"),cont=document.getElementById("continue"),back=document.getElementById("back"),bar=document.getElementById("bar");
 
-function enviarPergunta() {
+function esc(s){return String(s||"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]));}
 
-    const campo = document.getElementById("pergunta");
-
-    const texto = campo.value.trim();
-
-    if (texto === "") {
-        return;
-    }
-
-    const respostas = document.getElementById("respostas");
-
-
-    // PERGUNTA DO USUÁRIO
-
-    const pergunta = document.createElement("div");
-
-    pergunta.className = "mensagem usuario";
-
-    pergunta.textContent = texto;
-
-    respostas.appendChild(pergunta);
-
-
-    campo.value = "";
-
-
-    // RESPOSTA TEMPORÁRIA
-
-    const resposta = document.createElement("div");
-
-    resposta.className = "mensagem vetrix";
-
-    resposta.textContent =
-        "Recebi sua pergunta! A inteligência do Vetrix será conectada quando a API estiver configurada.";
-
-    respostas.appendChild(resposta);
-
-
-    resposta.scrollIntoView({
-        behavior: "smooth"
-    });
+function iniciarOnboarding(){
+  dados.modo=entradaModo||null; dados.nivel=entradaNivel||null; etapa=1; render(); overlay.classList.add("show");
 }
-
-
-function novaConversa() {
-
-    document.getElementById("respostas").innerHTML = "";
-
-    document.getElementById("pergunta").value = "";
-
-    document.getElementById("pergunta").focus();
+function render(){
+  back.style.display=etapa===1?"none":"block"; bar.style.width=etapa===1?"50%":"100%";
+  if(etapa===1){
+    if(dados.modo==="base"){renderObjetivos();return;}
+    content.innerHTML=`<h2>Como você pretende usar o Vetrix?</h2><p class="sub">Escolha seu nível de estudo para que o Vetrix possa adaptar melhor as respostas.</p>
+    <div class="options">
+    <button class="option ${dados.nivel==="fundamental"?"selected":""}" onclick="nivel('fundamental',this)"><b>📘 Fundamental II</b><small>6º, 7º, 8º ou 9º ano</small></button>
+    <button class="option ${dados.nivel==="medio"?"selected":""}" onclick="nivel('medio',this)"><b>🎓 Ensino Médio</b><small>1º, 2º ou 3º ano</small></button>
+    <button class="option ${dados.nivel==="faculdade"?"selected":""}" onclick="base(this)"><b>🌎 Não sou estudante</b><small>Usar o Vetrix no modo base</small></button>
+    <button class="option ${dados.nivel==="faculdade"?"selected":""}" onclick="nivel('faculdade',this)"><b>🏫 Faculdade</b><small>Curso e período</small></button></div>`;
+    cont.disabled=!dados.nivel&&! (dados.modo==="base"); return;
+  }
+  if(dados.modo==="base")renderObjetivos();else renderEstudante();
 }
+function nivel(n,e){dados.modo="estudo";dados.nivel=n;document.querySelectorAll(".option").forEach(x=>x.classList.remove("selected"));e.classList.add("selected");cont.disabled=false;}
+function base(e){dados.modo="base";dados.nivel=null;document.querySelectorAll(".option").forEach(x=>x.classList.remove("selected"));e.classList.add("selected");cont.disabled=false;}
+function renderEstudante(){
+  if(dados.nivel==="fundamental"||dados.nivel==="medio"){
+    const titulo=dados.nivel==="fundamental"?"Qual é o seu ano escolar?":"Qual é o seu ano do Ensino Médio?";
+    const opts=dados.nivel==="fundamental"?["6º ano","7º ano","8º ano","9º ano"]:["1º ano","2º ano","3º ano"];
+    content.innerHTML=`<h2>${titulo}</h2><p class="sub">Assim o Vetrix consegue adaptar melhor o nível das explicações.</p><div class="form"><label>Ano</label><select id="serie"><option value="">Selecione...</option>${opts.map(x=>`<option>${x}</option>`).join("")}</select></div>`;
+    document.getElementById("serie").value=dados.serie||"";
+  }else{
+    content.innerHTML=`<h2>Conte um pouco sobre sua faculdade</h2><p class="sub">Informe seu curso e, se quiser, seu semestre/período.</p><div class="form"><label>Curso</label><input id="curso" placeholder="Ex.: Engenharia de Computação"><label>Semestre/período (opcional)</label><input id="periodo" placeholder="Ex.: 3º semestre"></div>`;
+    document.getElementById("curso").value=dados.curso||"";document.getElementById("periodo").value=dados.periodo||"";
+  }
+}
+function renderObjetivos(){
+ const a=["💼 Trabalho e produtividade","💡 Criar ideias e projetos","🔎 Pesquisar e aprender sobre assuntos","💻 Tecnologia e programação","✍️ Escrever e criar conteúdos","🎨 Criatividade","💬 Conversar e tirar dúvidas","➕ Outros"];
+ content.innerHTML=`<h2>O que você pretende fazer com o Vetrix?</h2><p class="sub">Você pode escolher uma ou várias opções.</p><div class="goals">${a.map(x=>{let v=x.replace(/^.+? /,"");return `<label class="goal"><input type="checkbox" value="${esc(v)}" ${dados.objetivos.includes(v)?"checked":""} onchange="objetivos()"> <span>${x}</span></label>`}).join("")}</div><div class="other ${dados.objetivos.includes("Outros")?"show":""}" id="other"><div class="form"><label>Conte para o Vetrix o que você pretende fazer:</label><textarea id="otherText" placeholder="Ex.: Quero usar o Vetrix para organizar meus projetos de robótica.">${esc(dados.outroObjetivo)}</textarea></div></div>`;
+ objetivos();
+}
+function objetivos(){
+ dados.objetivos=[...document.querySelectorAll(".goal input:checked")].map(x=>x.value);
+ const o=document.getElementById("other");if(o)o.classList.toggle("show",dados.objetivos.includes("Outros"));
+ const t=document.getElementById("otherText");if(t){dados.outroObjetivo=t.value; t.oninput=objetivos;}
+ cont.disabled=!dados.objetivos.length||(dados.objetivos.includes("Outros")&&!dados.outroObjetivo.trim());
+}
+function continuar(){
+ if(etapa===1){if(dados.modo==="base"){etapa=2;render();return}if(!dados.nivel)return;etapa=2;render();return}
+ if(dados.modo==="estudo"){
+  if(dados.nivel==="faculdade"){dados.curso=document.getElementById("curso").value.trim();dados.periodo=document.getElementById("periodo").value.trim();if(!dados.curso){alert("Digite pelo menos o seu curso.");return}}
+  else{dados.serie=document.getElementById("serie").value;if(!dados.serie){alert("Escolha o seu ano escolar.");return}}
+ }else{objetivos();if(cont.disabled)return}
+ dados.primeiroAcessoConcluido=true;localStorage.setItem(KEY,JSON.stringify(dados));perfil=dados;overlay.classList.remove("show");aplicar();
+}
+function voltar(){etapa=1;render();}
+function aplicar(){
+ if(!perfil)return;
+ document.getElementById("modeText").textContent=perfil.modo==="estudo"?"modo estudo":"modo base";
+ if(perfil.modo==="estudo"){
+  let d=perfil.nivel==="faculdade"?perfil.curso:perfil.serie;
+  document.getElementById("description").textContent="O Vetrix está adaptado para seus estudos"+(d?" — "+d:"")+". Faça perguntas, peça explicações, resumos, exercícios e muito mais.";
+  document.getElementById("modeButton").innerHTML='🏠 <span class="label">Modo Base</span>';
+ }else{
+  document.getElementById("description").textContent="Pode fazer perguntas, tirar dúvidas, pedir ideias, conversar e muito mais. Estou aqui para te ajudar.";
+  document.getElementById("modeButton").innerHTML='📚 <span class="label">Modo Estudo</span>';
+ }
+}
+function trocarModo(){
+ if(!perfil){iniciarOnboarding();return}
+ if(perfil.modo==="estudo"){perfil.modo="base";localStorage.setItem(KEY,JSON.stringify(perfil));aplicar()}
+ else if(perfil.nivel){perfil.modo="estudo";localStorage.setItem(KEY,JSON.stringify(perfil));aplicar()}
+ else{dados={modo:"estudo",nivel:null,serie:"",curso:"",periodo:"",objetivos:[],outroObjetivo:""};iniciarOnboarding()}
+}
+function preencher(x){document.getElementById("question").value=x;document.getElementById("question").focus()}
+function enviar(){let q=document.getElementById("question"),r=document.getElementById("response"),t=q.value.trim();if(!t)return;r.style.display="block";r.innerHTML='<b style="color:var(--orange)">Vetrix:</b><br><br>Recebi sua pergunta: “'+esc(t)+'”<br><br><span style="color:var(--dim)">A API ainda precisa ser conectada para gerar a resposta real.</span>';q.value=""}
+function nova(){document.getElementById("question").value="";document.getElementById("response").style.display="none";document.getElementById("question").focus()}
 
-
-document
-    .getElementById("pergunta")
-    .addEventListener("keydown", function(event) {
-
-        if (event.key === "Enter") {
-
-            enviarPergunta();
-
-        }
-
-    });
-
+if(perfil&&perfil.primeiroAcessoConcluido)aplicar();else iniciarOnboarding();
 </script>
-
 </body>
 </html>
